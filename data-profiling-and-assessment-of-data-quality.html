@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Data profiling and assessment of data quality | Extracting insights from dirty data - A use case of multisensory data from beehives</title>
+  <meta name="description" content="This is my Master’s thesis in the study programme ‘Big Data &amp; Business Analytics’ at SRH Hochschule Heidelberg." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Data profiling and assessment of data quality | Extracting insights from dirty data - A use case of multisensory data from beehives" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is my Master’s thesis in the study programme ‘Big Data &amp; Business Analytics’ at SRH Hochschule Heidelberg." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Data profiling and assessment of data quality | Extracting insights from dirty data - A use case of multisensory data from beehives" />
+  
+  <meta name="twitter:description" content="This is my Master’s thesis in the study programme ‘Big Data &amp; Business Analytics’ at SRH Hochschule Heidelberg." />
+  
+
+<meta name="author" content="Alexandros Melemenidis" />
+
+
+<meta name="date" content="2020-11-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="literature.html"/>
+<link rel="next" href="use-cases-for-machine-learning-methods.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MSc Thesis - Bee Observer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#objective"><i class="fa fa-check"></i><b>1.1</b> Objective</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#methodology"><i class="fa fa-check"></i><b>1.2</b> Methodology</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a><ul>
+<li class="chapter" data-level="2.1" data-path="literature.html"><a href="literature.html#short-introduction-to-apiology"><i class="fa fa-check"></i><b>2.1</b> Short introduction to apiology</a></li>
+<li class="chapter" data-level="2.2" data-path="literature.html"><a href="literature.html#first-steps-in-precision-beekeeping"><i class="fa fa-check"></i><b>2.2</b> First steps in precision beekeeping</a></li>
+<li class="chapter" data-level="2.3" data-path="literature.html"><a href="literature.html#useful-methods-of-machine-learning-from-other-domains"><i class="fa fa-check"></i><b>2.3</b> Useful methods of machine learning from other domains</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html"><i class="fa fa-check"></i><b>3</b> Data profiling and assessment of data quality</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#sensor-data"><i class="fa fa-check"></i><b>3.1</b> Sensor data</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#single-column-analysis"><i class="fa fa-check"></i><b>3.1.1</b> Single column analysis</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#initial-cleaning"><i class="fa fa-check"></i><b>3.1.2</b> Initial cleaning</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#multi-column-analysis"><i class="fa fa-check"></i><b>3.1.3</b> Multi-column analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#inspections-data"><i class="fa fa-check"></i><b>3.2</b> Inspections data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#metadata"><i class="fa fa-check"></i><b>3.3</b> Apiary and hive metadata as a means to integrate data from external sources</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#determining-the-sun-level"><i class="fa fa-check"></i><b>3.3.1</b> Determining the sun level</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#meteorological-data"><i class="fa fa-check"></i><b>3.3.2</b> Meteorological data</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#phenological-data"><i class="fa fa-check"></i><b>3.3.3</b> Phenological data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html"><i class="fa fa-check"></i><b>4</b> Use cases for machine learning methods</a><ul>
+<li class="chapter" data-level="4.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#supervised-swarm-detection"><i class="fa fa-check"></i><b>4.1</b> Supervised swarm detection</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#training-a-classification-model"><i class="fa fa-check"></i><b>4.1.1</b> Training a classification model</a></li>
+<li class="chapter" data-level="4.1.2" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#importance-of-swarm-prevention"><i class="fa fa-check"></i><b>4.1.2</b> Importance of swarm prevention</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#other-use-cases-for-supervised-methods"><i class="fa fa-check"></i><b>4.2</b> Other use cases for supervised methods</a></li>
+<li class="chapter" data-level="4.3" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#unsupervised-anomaly-detection"><i class="fa fa-check"></i><b>4.3</b> Unsupervised anomaly detection</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="conclusion-and-outlook.html"><a href="conclusion-and-outlook.html"><i class="fa fa-check"></i><b>5</b> Conclusion and Outlook</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="additional-charts.html"><a href="additional-charts.html"><i class="fa fa-check"></i><b>A</b> Additional charts</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Extracting insights from dirty data - A use case of multisensory data from beehives</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-profiling-and-assessment-of-data-quality" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Data profiling and assessment of data quality</h1>
+<p>Bee Observer is based on two sources of internal data: the continuous flow of sensor data from beehives which is stored in an influxdb database (<span class="citation">InfluxData (<a href="#ref-InfluxData.332020" role="doc-biblioref">n.d.</a>)</span>), and the beekeepers’ records of their irregular inspections, which are stored in a MySQL database. Beyond the internal data, there may be merit in combining this information with data from other sources, for example meteorological data or geospatial data on agricultural practices nearby. In the context of the project I am able to retrieve sensor data from the influxdb independently, but due to privacy concerns, access to the inspections database is restricted to the project team at the University of Bremen who regularly provide database dumps to Correlaid project members. Data can be retrieved and analyzed locally, but the university also provides a dedicated server for RStudio with 12 CPU cores and 48GB RAM. The analyses in this thesis cover data collected from 21 February 2019 to 30 September 2020, but given the huge volume of raw sensor data due to the high frequency some detailed analysis of raw sensor data may sometimes be limited to some shorter sample periods.</p>
+<div id="sensor-data" class="section level2">
+<h2><span class="header-section-number">3.1</span> Sensor data</h2>
+<p>Since February 2019, monitored beehives are regularly storing data in an influxdb database system, a column-oriented system aimed at fast reading and writing of time series data. The data are organized in “series” or “measurements” tables for every string “tag” per beehive. The “field” variables only allow numerical or logical data. Besides requiring this structure, the system does not allow for further restrictions in the schema. As a consequence, the database will accept any numerical data for a given field. Data can be queried from the database using InfluxQL, a SQL-like query language which allows some basic aggregations and transformations, but for certain preprocessing required in the context of this project, such as conditional adjustments to fix erroneous sensor data or lags to model sequence classifiers, further processing in R is required.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Every beehive transmits data on a number of variables, coming from three separate sensor units, as shown in figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:sensor-setup">3.1</a> (taken from <span class="citation">Senger et al. (<a href="#ref-Senger.2020" role="doc-biblioref">2020</a>)</span>): first, there is one unit with six temperature sensors (<span class="citation">(“DS18S20 1-Wire Parasite-Power Digital Thermometer,” <a href="#ref-MaximIntegrated.592020" role="doc-biblioref">n.d.</a>)</span>), measuring the temperature at five positions within the hive and once outside the hive. The second unit is a scale (<span class="citation">(“Single Point Load Cell H40a,” <a href="#ref-BoscheWagetechnik.532020" role="doc-biblioref">n.d.</a>)</span>), regularly measuring the weight of everything on it, i.e. the total of the hive, the bees, the pollen they foraged and honey they produced. Finally, there is another unit measuring humidity inside hive at the top, which also include another thermometer and a sensor for air pressure (<span class="citation">(“BME280,” <a href="#ref-BoschSensortecGmbH.572020" role="doc-biblioref">n.d.</a>)</span>). All sensors are connected to a small programmable development board (<span class="citation">Pycom (<a href="#ref-Pycom.28.09.2020" role="doc-biblioref">n.d.</a>)</span>), from which the data are sent to the influxdb server. The sensors used in the kits were selected to be cheap<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and easy to install for beekeepers, so that the entry barrier to participate in the project is low, but this may come at the cost of accuracy, also common to sensor data in general.</p>
+<div class="figure" style="text-align: center"><span id="fig:sensor-setup"></span>
+<img src="charts/wholehive.png" alt="Sensor set-up" width="1102" />
+<p class="caption">
+Figure 3.1: Sensor set-up
+</p>
+</div>
+<p>For an overview of the main variables available see table <a href="data-profiling-and-assessment-of-data-quality.html#tab:variables">3.1</a>. Every observation contains a timestamp and the unique key of the specific beehive. In total there are 15 numeric variables , but the data availability for those not listed in the table is too low for meaningful statistical analysis<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. There is some variation in the decimal precision across sensor kits, as this is set at the calibration by the beekeeper, but the values stated are a valid minimum for most.</p>
+<table>
+<caption><span id="tab:variables">Table 3.1: </span>Most frequent variables from sensors</caption>
+<colgroup>
+<col width="11%" />
+<col width="68%" />
+<col width="12%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">variable.names</th>
+<th align="left">description</th>
+<th align="left">type</th>
+<th align="left">precision</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">time</td>
+<td align="left">timestamp of the observation in Universal Time Coordinated (UTC)</td>
+<td align="left">POSIX date-time</td>
+<td align="left">seconds</td>
+</tr>
+<tr class="even">
+<td align="left">key</td>
+<td align="left">unique key of the beehive</td>
+<td align="left">string</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">weight_kg</td>
+<td align="left">total weight (= hive + bees + honey + food)</td>
+<td align="left">numeric</td>
+<td align="left">0.001 kg</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left">humidity at the top of the beehive</td>
+<td align="left">numeric</td>
+<td align="left">0.01 %</td>
+</tr>
+<tr class="odd">
+<td align="left">p</td>
+<td align="left">air pressure at the top of the beehive</td>
+<td align="left">numeric</td>
+<td align="left">1 hPa</td>
+</tr>
+<tr class="even">
+<td align="left">t</td>
+<td align="left">temperature at the top of the beehive</td>
+<td align="left">numeric</td>
+<td align="left">0.01 °C</td>
+</tr>
+<tr class="odd">
+<td align="left">t_i_1 … t_i_5</td>
+<td align="left">temperature inside: sensors 1 and 5 on the outside, 3 in the center and 2 and 4 in between</td>
+<td align="left">numeric</td>
+<td align="left">0.01 °C</td>
+</tr>
+<tr class="even">
+<td align="left">t_o</td>
+<td align="left">temperature outside</td>
+<td align="left">numeric</td>
+<td align="left">0.01 °C</td>
+</tr>
+</tbody>
+</table>
+<p>At the time of writing, the influx database has accumulated hundreds of millions of raw observations, coming from 129 different beehives. However, the dataset lacks in completeness: weight measurements are recorded in most observations, suggesting that the scale is sending data at shorter time intervals than the other sensors, or is less likely to fail than the other sensor components. Next in frequency are temperatures from the thermometers and since these are six individual sensors, data availability is varying across them considerably. The three variables coming from the humidity sensor (relative humidity, temperature and air pressure), by contrast, have roughly equal numbers of observations, see figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:nobs">3.2</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:nobs"></span>
+<img src="charts/observations_by_variable.gif" alt="Number of non-missing observations in raw dataset"  />
+<p class="caption">
+Figure 3.2: Number of non-missing observations in raw dataset
+</p>
+</div>
+<p>The number of observations on other variables is negligible. Sensors record data broadly every five seconds (the middle half of the intervals for all variables is at that value), but sometimes it takes less or more time between two valid observations of a variable, see figure <a href="additional-charts.html#fig:intervals">A.1</a> in the appendix. One has to note, however, that the various sensors may record their observations at different times in a non-synchronized way, making multivariate analysis difficult: in only around 60% of observations do we have non-missing entries for all our main variables of interest<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. To better enable multivariate methods, it may be useful to aggregate observations to a common and regular sampling rate.
+<span class="citation">Cheng et al. (<a href="#ref-Cheng.2018" role="doc-biblioref">2018</a>)</span> established a framework for data quality assessment in IoT, which can also be applied in this case, also to guide the strategy for cleaning. It provides objective indicators describing the volume of data relative to the theoretically possible volume, the share of complete observations and the share of correct observations<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
+<p>The data quality indicators are based on a constant sampling rate and a common sampling period for all nodes of a sensor network. As the many sensor kits have been added to the Bee Observer project over time and since time intervals between observations are varying, these assumptions are quite strong in this case. By considering a short stable data sample, I lower the risk of including too many sensor kits with only partial data, and also save computing time<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>. As regards the sampling rate, it is actually preferable to reshape the dataset to a common sampling rate: one the one hand this will create regular time series which allows for various time series analysis methods, and second it will increase the share of usable observations. Figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:volume">3.3</a> shows the data volume indicator, which is an average of the ratio of available observations to all possible observations in the common sampling period over all sensor kits: when aggregating the data to intervals of 5 seconds, which covered the majority of intervals of all variables of interest, data volume is at roughly 65%. When aggregating to lower frequency aggregates some gaps existing at higher frequencies are closed and the volume increases, reaching almost 75% at an interval of one minute and more than 80% at daily frequency.</p>
+<div class="figure" style="text-align: center"><span id="fig:volume"></span>
+<img src="charts/data_volume.png" alt="Data volume indicator at various sampling rates" width="856" />
+<p class="caption">
+Figure 3.3: Data volume indicator at various sampling rates
+</p>
+</div>
+<p>Aggregating the data to lower sampling rates will still not fix the issue of larger time gaps in the data: only a few beehives have transmitted data continuously over longer periods, and sensor outages over multiple days are not rare, see figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:availabilitypervariable">3.4</a>. For the application of many time series analysis methods, missing values are a problem and may have to be imputed.</p>
+<div class="figure" style="text-align: center"><span id="fig:availabilitypervariable"></span>
+<img src="charts/availability_per_variable_selected.png" alt="Heatmap of data availability" width="856" />
+<p class="caption">
+Figure 3.4: Heatmap of data availability
+</p>
+</div>
+<p>Even when considering all hives together, the coverage of the period from March to May 2019 is low. Latest data until September 2020 show an increase in participation, nonetheless the problem of gaps in the data persisted, as can be seen in figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:participation">3.5</a>: while as of the second year of the project data availability is clearly trending upwards, the daily fluctuation in the number of sensor kits sending data suggests interruptions in transmission. Gaps can arise when a sensor itself or the Wi-Fi antenna fails, as the data are not stored in the sensor kit for a later attempt of retransmission. Even the maximum number of sensor kits sending data on a given day with around 50 is clearly below the total number of distinct sensor kits in the database of 129.</p>
+<div class="figure" style="text-align: center"><span id="fig:participation"></span>
+<img src="charts/participation.png" alt="Data availability over time" width="856" />
+<p class="caption">
+Figure 3.5: Data availability over time
+</p>
+</div>
+<p>The next indicator of data quality in sensor networks introduced by <span class="citation">Cheng et al. (<a href="#ref-Cheng.2018" role="doc-biblioref">2018</a>)</span> is the data completeness indicator. This indicator is defined as the ratio of complete observations to the number of expected observations given the total sampling period and number of nodes in the network, in this case the sensor kits. I define a complete observation as one with non-missing values in the ten variables of interest. Figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:completeness">3.6</a> shows that at a sampling rate of 5 seconds the data set is around 40% complete, which can be increased to close to around 45% with a sampling rate of one observation per minute or lower. This low degree of completeness is due to a high share of beehives that do not have all sensors installed: out of 60 sensors transmitting data, only 36 send data on all variables of interest. Even at a low sampling rate such as daily, which is already not useful for a lot of real-time applications in beekeeping, less than half of observations are complete.</p>
+<div class="figure" style="text-align: center"><span id="fig:completeness"></span>
+<img src="charts/data_completeness.png" alt="Data completeness at various sampling rates" width="856" />
+<p class="caption">
+Figure 3.6: Data completeness at various sampling rates
+</p>
+</div>
+<p>The third data quality indicator by <span class="citation">Cheng et al. (<a href="#ref-Cheng.2018" role="doc-biblioref">2018</a>)</span> that is relevant here relates to the correctness. The correctness indicator is defined as the ratio of observations for which the actual values deviate from the true value only by a small margin to all observations. As I do not have a way to know the true values of the physical phenomena measured in the beehives, I proxy the data correctness using the share of observations with values within the physical ranges as defined in the product specifications. Figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:correctness">3.7</a> shows that data correctness has a local peak at a sampling rate of 30 seconds at around 55% and goes down with lower sampling rates, again pointing at the issues of larger gaps in the data: as I aggregate to lower frequency intervals the share of correct values declines faster than overall observations. Even at daily frequency the ratio is not substantially higher at 57%.</p>
+<div class="figure" style="text-align: center"><span id="fig:correctness"></span>
+<img src="charts/data_correctness.png" alt="Data correctness (proxied)" width="856" />
+<p class="caption">
+Figure 3.7: Data correctness (proxied)
+</p>
+</div>
+<p>The low level of correctness is driven by the low completeness of the dataset: in order for an observation to be correct, all variables need to have non-missing values. Calculating the correctness indicator for the individual variables points at much higher rates (see figure <a href="additional-charts.html#fig:correctnessvar">A.2</a> in the appendix): even the variable with the lowest correctness (weight) has a share of valid values above 90%. The proxied correctness indicator has to be seen as an upper bound to actual data correctness, as the cheap sensors sometimes transmit data that is within the valid sensor ranges, but nonetheless not plausible. In particular, values are often persistent over longer periods of time. Given the high precision of the sensors and the continuous biological processes within the hive, changes of exactly zero are highly unlikely and probably represent sensor malfunctions. Within the beehives, the sensors can be exposed to extreme conditions for which they are not necessarily built: in case the beehive is not well-protected from direct sun, the sensors on the outside or at the top of the hive could easily overheat. Bees may build honeycombs around sensors with wax, which may block the functioning or also cause them to fail. Finally, exposure to organic acids during a treatment against Varroa mite may damage the sensors.</p>
+<div id="single-column-analysis" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Single column analysis</h3>
+<div id="weight" class="section level4">
+<h4><span class="header-section-number">3.1.1.1</span> Weight</h4>
+<p>The total weight of the beehive is by far the main indicator of success or failure for the beekeeper: during spring the beekeeper should observe an increase in weight when the bees are foraging pollen and nectar. With knowledge about the weight of the empty hive and the weight fluctuations during a day the beekeeper can also estimate the population of the colony or the current pollen inflow.<br />
+In the raw dataset the value distribution for the weight variable ranges from below negative 4 million on the bottom to more than 3 million. Given that there can be no negative weight, all negative values should be removed. Likewise, according to the product specifications, the measurement unit is kg and the weight sensor can only weigh up 300kg so values above 300 should also be removed. At the set-up, the beekeepers can calibrate the scale unit. In most cases, zero is set to the empty scale, but possibly some beekeepers may also set the zero value to the scale with the empty beehive on top<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>. Regarding upper limits of plausible weight values, one could further combine the data with information on the type of hive (see <a href="data-profiling-and-assessment-of-data-quality.html#metadata">3.3</a>) and basic assumptions on the number and weight of bees in the colony.
+The initial cleaning of implausible weight levels reduces the number of observations by more than 10%. Now the distribution shows 99% of the technically feasible values lie in a range between 0kg and around 70kg, with a longer tail reaching until (exactly) 300 kg.<br />
+As described earlier, there are considerable issues with sensor inaccuracy in the raw data, where sensors record extreme weight fluctuations by more than 10kg or even 20kg from one observation to the next, as seen in the thin grey lines of figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:weightsmooth">3.8</a>. From a logical point of view, in particular the temporary increases in weight appear questionable: the most likely possibility would be some wild animal climbing on the hive for some time, but this is unlikely to happen as often as indicated in the figure, thus pointing at erroneous measurements. To correct for possible mismeasurements, but also to create regular time series we can retrieve from the influxdb directly the median values for specified time-blocks, in the example shown we decided for five minutes. The solid red line in the same figure no longer shows that many extreme weight fluctuations. The remaining abrupt changes could all be explained by interactions of the beekeeper: temporary drops in weight would indicate a case when the beekeeper removes a number of frames from the hive to inspect the health of the colony, but otherwise does not interfere. A permanent abrupt increase in weight (typically by a few kg) would indicate an inspection with a feeding, while a permanent drop in weight would indicate the harvest of surplus honey.</p>
+<div class="figure" style="text-align: center"><span id="fig:weightsmooth"></span>
+<img src="charts/weight_median_smoothing.png" alt="Time series of weight for selected beehive at different sampling rates" width="856" />
+<p class="caption">
+Figure 3.8: Time series of weight for selected beehive at different sampling rates
+</p>
+</div>
+<p>Such a simple down-sampling to a lower frequency does, unfortunately, not always solve the problem: there remain implausible observations for other beehives, in particular abnormally high values. Looking closer at some of those cases, however, do not allow for a simple explanation: in cases when the scale jumps up, the observations following often indicate some fluctuation, often stronger than previously, see figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:anomalyweight">3.9</a>. Perhaps these are cases when an animal climbs onto the hive, but it could also indicate a temporary loss of calibration.</p>
+<div class="figure" style="text-align: center"><span id="fig:anomalyweight"></span>
+<img src="charts/anomalous_weight_up.png" alt="Anomalous weight observations" width="856" />
+<p class="caption">
+Figure 3.9: Anomalous weight observations
+</p>
+</div>
+<p>Also, the rate of change bringing the values to these new levels should be checked against the laws of physics: even during rather quick beekeeper inspections which should be the main cause of larger weight deviations, it will take the beekeeper some minutes to remove the frames from the hive and put them back in after inspection, as can be seen in figure <a href="additional-charts.html#fig:inspectionschanges">A.3</a> in the appendix. Figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:CDFweightchange">3.10</a> illustrates that for most sensors, the weight measured changes from one observation to the next in a range between -10kg and +10kg per minute with the bulk of changes close to zero, while for a few sensors the range is much wider (from -10 tons to +10 tons per minute), indicating a general problem with the sensor.</p>
+<div class="figure" style="text-align: center"><span id="fig:CDFweightchange"></span>
+<img src="charts/CDF_weight_change_per_minute.png" alt="Distribution of weight changes" width="856" />
+<p class="caption">
+Figure 3.10: Distribution of weight changes
+</p>
+</div>
+<p>Upon closer observation, two beehives appear to have their scales not correctly calibrated as they show massive daily fluctuations of up to 50kg which is clearly not possible (see figure <a href="additional-charts.html#fig:weightanomaly">A.4</a> in the appendix).
+Besides the impact of beekeeper inspections, the cleaned data indicate a reoccurring daily pattern during the foraging season: from sunset to sunrise the hive loses weight (~250 g) as the bees remain inside, but their bodies burn the consumed nutrients and foraged nectar and produced honey dries. Then at sunrise the weight drops to a daily minimum as the worker bees leave the hive to forage nectar and pollen and reaches a higher level again around sunset when all workers have returned. Depending on environmental conditions there may be a potential intermediate peak around noon, as can be seen in figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:weightdaily">3.11</a> for June 18th and 19th, 2019.</p>
+<div class="figure" style="text-align: center"><span id="fig:weightdaily"></span>
+<img src="charts/weight_daily_pattern.png" alt="Daily seasonality in weight" width="856" />
+<p class="caption">
+Figure 3.11: Daily seasonality in weight
+</p>
+</div>
+<p>This daily seasonal pattern is fairly strong: for most sensor kits with enough data the correlation between current weight and the weight one day before is strongly positive and - for most of those with at least 70 days of complete data - very close to 1. This is also true when considering shorter rolling windows, where the regularity is however interrupted whenever a beekeeper inspection is captured in the rolling window.<br />
+With the start of the winter the bees stop foraging and the weight fluctuation ends and becomes a continuous slow decline in weight until the temperatures rise again and bees can start their next cycle.</p>
+</div>
+<div id="temperature" class="section level4">
+<h4><span class="header-section-number">3.1.1.2</span> Temperature</h4>
+<p>Temperature is another important indicator for the well-being of a bee colony: for good breeding conditions, the temperature inside the hive close to the brood needs to be maintained around 34 °C. A consistently lower temperature may indicate that the colony is weakened and unable to maintain the microclimate necessary for breeding. A significantly higher temperature may indicate problems ventilating the hive, which may also lead to a colony collapse.
+Similar to the weight data, also the raw observations for the various temperature variables have wide distributions going far beyond the product specifications of the sensors (for the thermometer unit from -55°C to +125°C and for the humidity unit from -40°C to +85°C), in particular for those from the thermometer unit. After removing those implausible values, one can observe that while for all sensors there are values towards the limits of the technical sensor range, but that the bulk of observations is concentrated in a rather narrow range from around 0°C to +50°C inside and -10°C to +40°C outside, indicating that the values beyond these ranges are also more likely to be erroneous measurements. These, however, appear to occur quite often and over longer time periods, so that they may also be present when considering median values for five-minute blocks, see figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:wrongtemp">3.12</a>: over a course of four days the temperature readings of various thermometer units drop to levels close to 0°C and stay there for longer periods of time before returning back to normal. At a data precision of 0.01 °C, within a small space with thousands of living bees (or outside, subject to the elements), longer periods of exactly zero change is very unlikely and suggest an issue with the sensors. This phenomenon of values “frozen” for long appears to be linked to the five sensors of the temperature unit inside (t_i_1 – t_i_5). For a number of sensor kits a high share of observations show changes of zero, even at aggregations for a lower sampling rate, although this is not always at necessarily problematic levels. The temperature measurements from the humidity unit at the top of the hive as well as those from the outside sensor suffer less from this phenomenon, but nonetheless contain outliers. The temperature outliers for all sensors are often, but not always, located before or after a period without transmission.</p>
+<div class="figure" style="text-align: center"><span id="fig:wrongtemp"></span>
+<img src="charts/wrong_t_readings.png" alt="Temperature time series for selected beehive" width="856" />
+<p class="caption">
+Figure 3.12: Temperature time series for selected beehive
+</p>
+</div>
+<p>To monitor the health of the colony, in particular the health of the brood, it would be useful to obtain temperature measurements from close to the brood. The additional placement of cables in a hive, however, makes beekeeping more difficult. To interfere with beekeeping as little as possible, the designers of the system suggested to install the sensors in between the frames so that they can be removed without any issue (<span class="citation">Hiverize (<a href="#ref-Hiverize.5162020" role="doc-biblioref">n.d.</a>)</span>). With this design based on the box rather than the bees, it is not possible to ensure to have a specific proximity to the brood. One would assume that the sensor in the middle, t_i_3, would be closest to the brood as one would expect the colony to maintain the brood at a maximum distance to the outside, to keep temperature at a sufficient level. This is, however, not the case for all hives and not for the whole time period as the distribution of brood cells within the hive may change over time, see figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:warmest">3.13</a><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:warmest"></span>
+<img src="charts/highest_temp.png" alt="Location of highest temperature for selected beehive" width="856" />
+<p class="caption">
+Figure 3.13: Location of highest temperature for selected beehive
+</p>
+</div>
+<p>During the summer period, a stability in temperature around the optimum for brood development, as described in the literature (<span class="citation">Zacepins et al. (<a href="#ref-Zacepins.2016" role="doc-biblioref">2016</a>)</span>), can be observed for a lot of hives in this dataset, but this is not maintained over the winter. For the wider range of hives, all temperature data underlies considerable day-night fluctuations and a general seasonal pattern over the year.</p>
+</div>
+<div id="humidity" class="section level4">
+<h4><span class="header-section-number">3.1.1.3</span> Humidity</h4>
+<p>Humidity is another important parameter for the health of a bee colony, in particular for the development of the brood: <span class="citation">Doull (<a href="#ref-Doull.1976" role="doc-biblioref">1976</a>)</span> showed that there is an ideal range of relative humidity in the brood nest that allows larvae to develop well, while under too dry conditions the eggs may shrivel or if the bees do hatch, they may not be fully developed. More recent works using sensors (<span class="citation">Human, Nicolson, and Dietemann (<a href="#ref-Human.2006" role="doc-biblioref">2006</a>)</span>) revealed distinct day and night patterns and somewhat different humidity levels at different locations inside the beehive. Researchers are still unclear as to whether humidity is actively regulated by the bees or passively as a side effect of thermoregulation: for example. when the nest temperature becomes too warm bees spread droplets of water on the comb and fan their wings to make the water evaporate and cool the temperature, this will at the same time raise humidity.
+According to the product specifications, the sensor measures relative humidity, that is the saturation of air with water vapor relative to its maximum capacity at a given temperature, measured in percent. By definition, the values have to be within a range from 0% to 100%. The raw dataset does, however, contain both negative values as well as very large positive values, which need to be cleaned.<br />
+Humidity is also underlying a strong daily seasonality, during the foraging season humidity drops from sunrise onwards, becoming relatively dry as workers leave the hive, and increases again when they return: overnight the bees evaporate body heat and the foraged nectar, which to a large proportion is water, dries. In terms of data quality, long gaps in the data when no data (or at least no data within the sensor range) are transmitted are frequent across time and beehives, whereas the problem of frozen sensors, as illustrated earlier with temperature, does not occur so much. By contrast, besides the daily patterns, the relative humidity within the hive is very volatile, see figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:dailyhumidity">3.14</a>, and much more so than for weight and temperature.</p>
+<div class="figure" style="text-align: center"><span id="fig:dailyhumidity"></span>
+<img src="charts/humidity_intra_day.png" alt="Daily seasonality and general volatility of relative humidity" width="856" />
+<p class="caption">
+Figure 3.14: Daily seasonality and general volatility of relative humidity
+</p>
+</div>
+<p>With the start of the winter the daily fluctuation becomes less and the general level of relative humidity is higher, see figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:longhumidity">3.15</a>. The positive correlation with the humidity level of the previous day is more stable than for weight, but somewhat lower.</p>
+<div class="figure" style="text-align: center"><span id="fig:longhumidity"></span>
+<img src="charts/humidity_foraging_vs_hibernation.png" alt="Humidity fluctuation for a selected beehive with long history" width="856" />
+<p class="caption">
+Figure 3.15: Humidity fluctuation for a selected beehive with long history
+</p>
+</div>
+</div>
+<div id="air-pressure" class="section level4">
+<h4><span class="header-section-number">3.1.1.4</span> Air pressure</h4>
+<p>So far there was no mentioning of the air pressure in previous work on precision beekeeping, but the humidity sensor unit does record this information, so discarding it may be premature: Air pressure is an environmental factor and could correlate with weather conditions, which ultimately would also affect bee behavior.
+According to the product specifications the sensor can measure air pressure in a range from 300 to 1100 hPa. As most beehives in the dataset are located in Germany, one could also generally exclude values that would imply the beehive is located higher than the Zugspitze, i.e. values below around 650 hPa. The remaining observations then stay in a quite narrow range. Over time there is cyclical variation in air pressure, which is more weekly rather than daily and in general not really predictable. Pressure values are very persistent, given the low precision of the sensor at 1 hPa, leading to step-like time series as shown in figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:pressure">3.16</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:pressure"></span>
+<img src="charts/pressure_cycles.png" alt="Air pressure over time for a selected bee hive" width="856" />
+<p class="caption">
+Figure 3.16: Air pressure over time for a selected bee hive
+</p>
+</div>
+<p>It appears unlikely that bee behavior is reflected in changes in air pressure as measured by the sensor given the difference in seasonality with the other variables, but the data on air pressure may still be useful as a more precise indicator for weather conditions than meteorological data that needs to be first retrieved from other sources and which will likely have a lower frequency.</p>
+</div>
+</div>
+<div id="initial-cleaning" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Initial cleaning</h3>
+<p>In order to have good results in any analysis, the sensor data need to be cleaned from values that do not represent actual developments within the beehive, but rather sensor failures. At the same time, the cleaning should not be too computationally expensive so that the cleaning could also run online. As a first step we should remove observations clearly outside the sensor range and at the same time reduce volatility and improve completeness of the dataset by filtering and down-sampling to lower time intervals. This can already be implemented at the level of the influxdb database using continuous queries as shown in the code chunk below for the chosen interval of one minute using medians. The sampling rate of one minute is chosen to capture volatile developments such as swarms, which occur within only few minutes, as shown later.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data-profiling-and-assessment-of-data-quality.html#cb1-1"></a>CREATE CONTINUOUS QUERY <span class="st">&quot;enforce_range_and_downsample_weight&quot;</span> ON <span class="st">&quot;bee_data&quot;</span></span>
+<span id="cb1-2"><a href="data-profiling-and-assessment-of-data-quality.html#cb1-2"></a>RESAMPLE EVERY 5m FOR 10m</span>
+<span id="cb1-3"><a href="data-profiling-and-assessment-of-data-quality.html#cb1-3"></a>BEGIN</span>
+<span id="cb1-4"><a href="data-profiling-and-assessment-of-data-quality.html#cb1-4"></a>  SELECT <span class="kw">median</span>(<span class="st">&quot;weight_kg&quot;</span>) AS <span class="st">&quot;weight_kg&quot;</span> INTO <span class="st">&quot;bee_data&quot;</span>.<span class="st">&quot;autogen&quot;</span>.<span class="st">&quot;downsampled_sensors&quot;</span> </span>
+<span id="cb1-5"><a href="data-profiling-and-assessment-of-data-quality.html#cb1-5"></a>    FROM <span class="st">&quot;sensors&quot;</span></span>
+<span id="cb1-6"><a href="data-profiling-and-assessment-of-data-quality.html#cb1-6"></a>      WHERE <span class="st">&quot;weight_kg&quot;</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">0</span> AND <span class="st">&quot;weight_kg&quot;</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">300</span> </span>
+<span id="cb1-7"><a href="data-profiling-and-assessment-of-data-quality.html#cb1-7"></a>        GROUP BY <span class="st">&quot;key&quot;</span>, <span class="kw">time</span>(1m)</span>
+<span id="cb1-8"><a href="data-profiling-and-assessment-of-data-quality.html#cb1-8"></a>END</span></code></pre></div>
+<p>Based on the analysis in the previous sub-section, it appears to be a good idea to remove observations which show a faster rate of change than could be explained by natural changes in the bee hive, the environment or due to beekeeper interventions and thus indicate sensor failure. Further, observations representing zero change should be removed. While they occur quite often, and the observation levels of most of them are within plausible ranges, some form of interpolation method to more gradual changes may improve the predictive properties of models. The next code chunk shows an example of a simple R implementation on how to remove these types of observations using Tidyverse packages (<span class="citation">Wickham et al. (<a href="#ref-Wickham.2019" role="doc-biblioref">2019</a>)</span>), which runs with a satisfactory performance on a local machine on a table of around 6 million observations with 10 columns at a 1-minute sampling rate: it is a simple loop that for each sensor-kit and variable computes the rate of change between two subsequent observations, filters out zero changes and extreme changes and repeats until there are no problematic changes left.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-1"></a>thresholds &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">h =</span> <span class="dv">10</span>, <span class="dt">weight_kg =</span> <span class="dv">16</span>, <span class="dt">p =</span> <span class="dv">2</span>, <span class="dt">t_o =</span> <span class="fl">0.75</span>, <span class="dt">t =</span> <span class="dv">6</span>, </span>
+<span id="cb2-2"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-2"></a>                <span class="dt">t_i_1 =</span> <span class="dv">6</span>, <span class="dt">t_i_2 =</span> <span class="dv">6</span>, <span class="dt">t_i_3 =</span> <span class="dv">6</span>, <span class="dt">t_i_4 =</span> <span class="dv">6</span>, <span class="dt">t_i_5 =</span> <span class="dv">6</span>)</span>
+<span id="cb2-3"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-3"></a></span>
+<span id="cb2-4"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-4"></a>clean_zero_and_extreme_change &lt;-<span class="st"> </span>data_within_sensor_range <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-5"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-5"></a><span class="st">  </span><span class="kw">group_by</span>(key) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-6"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-6"></a><span class="st">  </span><span class="kw">group_modify</span>(<span class="op">~</span><span class="st"> </span>{</span>
+<span id="cb2-7"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-7"></a><span class="co"># FOR EACH VARIABLE FOR EACH SENSOR KIT</span></span>
+<span id="cb2-8"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-8"></a>    individual_dfs &lt;-<span class="st"> </span><span class="kw">map</span>(vars, <span class="cf">function</span>(variable) {</span>
+<span id="cb2-9"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-9"></a>      temp &lt;-<span class="st"> </span>.x[, <span class="kw">c</span>(<span class="st">&quot;time&quot;</span>, variable)]  <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">v =</span> variable) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-10"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-10"></a><span class="co"># REMOVE MISSING VALUES AND COMPUTE GROWTH PER MINUTE RELATIVE TO PREVIOUS OBSERVATION </span></span>
+<span id="cb2-11"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-11"></a><span class="st">        </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-12"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-12"></a><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">derivative =</span> (v <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(v))<span class="op">/</span><span class="kw">as.numeric</span>(time <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(time), <span class="dt">units =</span> <span class="st">&quot;mins&quot;</span>))</span>
+<span id="cb2-13"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-13"></a></span>
+<span id="cb2-14"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-14"></a><span class="co"># FILTER OUT ZERO CHANGES AND CHANGES BEYOND THE DEFINED THRESHOLD, RECOMPUTE CHANGES AND REPEAT UNTIL THERE ARE NO MORE EXTREME CHANGES     </span></span>
+<span id="cb2-15"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-15"></a>      <span class="cf">while</span>(<span class="kw">max</span>(<span class="kw">abs</span>(temp<span class="op">$</span>derivative), <span class="dt">na.rm =</span> T) <span class="op">&gt;</span><span class="st"> </span>thresholds[variable]) {</span>
+<span id="cb2-16"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-16"></a>        temp &lt;-<span class="st"> </span>temp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>((<span class="kw">abs</span>(derivative) <span class="op">&lt;=</span><span class="st"> </span>thresholds[variable] <span class="op">&amp;</span><span class="st"> </span>derivative <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) <span class="op">|</span><span class="st"> </span><span class="kw">is.na</span>(derivative)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-17"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-17"></a><span class="st">          </span><span class="kw">mutate</span>(<span class="dt">derivative =</span> (v <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(v))<span class="op">/</span><span class="kw">as.numeric</span>(time <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(time), <span class="dt">units =</span> <span class="st">&quot;mins&quot;</span>))</span>
+<span id="cb2-18"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-18"></a>      }</span>
+<span id="cb2-19"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-19"></a>      temp &lt;-<span class="st"> </span>temp <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-20"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-20"></a><span class="st">        </span><span class="kw">select</span>(<span class="op">-</span>derivative) </span>
+<span id="cb2-21"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-21"></a>      </span>
+<span id="cb2-22"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-22"></a>      <span class="kw">names</span>(temp) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;time&quot;</span>, variable)</span>
+<span id="cb2-23"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-23"></a>      <span class="kw">return</span>(temp)</span>
+<span id="cb2-24"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-24"></a>    })</span>
+<span id="cb2-25"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-25"></a>    <span class="co"># COMBINE VARIABLES TO ONE DATAFRAME</span></span>
+<span id="cb2-26"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-26"></a>    <span class="kw">reduce</span>(individual_dfs, full_join, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;time&quot;</span>))</span>
+<span id="cb2-27"><a href="data-profiling-and-assessment-of-data-quality.html#cb2-27"></a>  })</span></code></pre></div>
+<p>The thresholds selected for declaring changes as implausible is different across variables and are described in table <a href="data-profiling-and-assessment-of-data-quality.html#tab:thresholds">3.2</a>. Given the extreme movements in weight - but partially also temperature - during beekeeper inspections, the thresholds for these variables need to be somewhat higher. The cleaning is thus only able to remove the most extreme implausible observations, as shown in the red lines in figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:effect">3.17</a>.</p>
+<table>
+<caption><span id="tab:thresholds">Table 3.2: </span>Thresholds for variable fluctuations</caption>
+<colgroup>
+<col width="11%" />
+<col width="71%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">variable.names</th>
+<th align="left">description</th>
+<th align="left">threshold.for.changes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">weight_kg</td>
+<td align="left">total weight</td>
+<td align="left">16 kg / minute</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left">humidity at the top of the beehive</td>
+<td align="left">10 % / minute</td>
+</tr>
+<tr class="odd">
+<td align="left">p</td>
+<td align="left">air pressure at the top of the beehive</td>
+<td align="left">2 hPa / minute</td>
+</tr>
+<tr class="even">
+<td align="left">t</td>
+<td align="left">temperature at the top of the beehive</td>
+<td align="left">6°C / minute</td>
+</tr>
+<tr class="odd">
+<td align="left">t_i_1 … t_i_5</td>
+<td align="left">temperature inside: sensors 1 and 5 on the outside, 3 in the center and 2 and 4 in between</td>
+<td align="left">6°C / minute</td>
+</tr>
+<tr class="even">
+<td align="left">t_o</td>
+<td align="left">temperature outside</td>
+<td align="left">0.75°C / minute</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span id="fig:effect"></span>
+<img src="charts/effect_of_cleaning.png" alt="Effect of simple cleaning algorithm" width="856" />
+<p class="caption">
+Figure 3.17: Effect of simple cleaning algorithm
+</p>
+</div>
+<p>While removing or correcting values may improve data quality, ideally sensor failures should not occur in the first place. To quickly react to wrong calibration or emerging defects of some sensors, monitoring tools for beekeepers as well as for the project team may help remedy these issues. A project team colleague has implemented an R script to identify longer sequences of missing values by sensor kit and variable which was already implemented in a dashboard solution for the project team, see figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:dashboard">3.18</a>. Simpler summaries on time elapsed between subsequent observations, or the number of observations outside the technical sensor range within a given time interval could also be implemented already at the level of the database using continuous queries and be visualized in near real-time.</p>
+<div class="figure" style="text-align: center"><span id="fig:dashboard"></span>
+<img src="charts/Dashboard.png" alt="Interactive visualization of missing values" width="544" />
+<p class="caption">
+Figure 3.18: Interactive visualization of missing values
+</p>
+</div>
+<p>By removing more observations, correctness may improve, but possibly at the cost of data volume and completeness. For certain lengths of data gaps, it may thus be useful to interpolate missing values based on available data for other variables. As a basis of understanding the relationships between the variables, the next section analyses the correlations between them.</p>
+</div>
+<div id="multi-column-analysis" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Multi-column analysis</h3>
+<p>To analyze the relationship among the ten variables of interest, we restrict ourselves to a smaller subset of 34 bee hives which report observations on all variables of interest at multiple points in time, resulting in about 7.1 million observations since February 2019. After removing values outside the technically feasible ranges as well as steep changes and zero changes, we end up with slightly below 7 million observations containing information on at least one variable. As this step removed a lot of zero change values in between valid observations, it is useful to refill shorter gaps using simple interpolation techniques<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>. I do this with the using the imputeTS package (<span class="citation">Moritz and Bartz-Beielstein (<a href="#ref-Moritz.2017" role="doc-biblioref">2017</a>)</span>). This brings the sample again closer to the original number of observations.<br />
+The data quality analysis at the beginning of this chapter already indicated that the data are very incomplete overall, but this is not just the case for bee hives with missing sensors and never report complete observations, but also for those that do have complete observations. Following the methodology of <span class="citation">Kuhn and Johnson (<a href="#ref-Kuhn.2019" role="doc-biblioref">2019</a>)</span>, the so-called “upset plot” in figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:upsetplot">3.19</a> shows that after the interpolation of shorter gaps around one sixth of the observations are missing data from the temperature unit, whereas this is somewhat less of an issue for the scale and the humidity unit (bar chart panel on the left-hand side). Missingness tends to be clustered at the technical unit: in more than 600,000 observations all three variables from the humidity unit are missing and in around 300,000 cases the six sensors of the temperature unit did not report valid observations (tallest two bars on the top panel bar chart). In around 250,000 observations data from the scale are missing. Besides observations with no data at all (excluded from the chart), other combinations of missing variables or instances of only one variable missing are less frequent.</p>
+<div class="figure" style="text-align: center"><span id="fig:upsetplot"></span>
+<img src="charts/missingness_across_variables.png" alt="Upset plot of missingness after initial cleaning" width="350" />
+<p class="caption">
+Figure 3.19: Upset plot of missingness after initial cleaning
+</p>
+</div>
+<p>Given the large issue of missingness from the temperature unit it would be useful to analyze whether missing values for temperature occur at specific values for the non-missing variables. Looking at the distribution of values for relative humidity and outside temperature between observations with the value for the central temperature sensor missing and those with data, there is a tendency for missingness to occur at lower outside temperatures and higher humidity (see figure <a href="additional-charts.html#fig:violint">A.6</a> and figure <a href="additional-charts.html#fig:violinh">A.5</a> in the appendix). Looking at the last valid observations before a data gap compared with normal valid observations confirms this picture, see figure <a href="additional-charts.html#fig:violingapt">A.7</a> in the appendix. Thus, beekeepers as well as the project team should probably pay more attention on sensor maintenance during spring and autumn, when temperatures are lower, but inspections are still possible without endangering the bees too much.<br />
+As a next step we should analyze how the variables are related when not missing, as strong correlations may be useful for the imputation of missing values over longer periods. Given the higher volatility of the humidity data, we transform it to centered 5-minute moving averages. While the relationships differ somewhat between sensor kits, the general pattern seen everywhere is a positive correlation between the temperature sensors inside the hive, in particular of those next to each other. The temperature at the top of the hive is somewhat less positively correlated with the temperatures at the center, but more strongly with the outside temperature, see figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:correlations">3.20</a>. Looking at all observations together, there is a clear negative correlation between humidity and temperature (in particular at the same sensor at the top of the hive), but this does not hold across all sensor kits, perhaps due to differences in the seasons covered.</p>
+<div class="figure" style="text-align: center"><span id="fig:correlations"></span>
+<img src="charts/Correlations_all_h_smoothed.png" alt="Correlations among temperature variables" width="350" />
+<p class="caption">
+Figure 3.20: Correlations among temperature variables
+</p>
+</div>
+</div>
+</div>
+<div id="inspections-data" class="section level2">
+<h2><span class="header-section-number">3.2</span> Inspections data</h2>
+<p>Further to installing the sensor kits, beekeepers participating in Bee Observer can log their inspections in a web application suitable to work on smartphones. Screenshots of all app menus can be found in the appendix (figure <a href="additional-charts.html#fig:menuinspections">A.10</a>). The information logged enters a MySQL database that is organized in rows per aspect of the inspection, instead of one row per inspection. This results in a somewhat odd mixed structure in which different data types are combined in one numeric column “value”, which, depending on the category ID, may represent either a Boolean value, a number, a qualitative value on an ordered Likert scale or the option selected from a dropdown list menu. The only mandatory variables that need to be provided is the date and time of the inspection, whether or not the colony was fed, a score on how gentle the bees react to the inspection, how much flight activity they show and how the hive was inspected (fully, i.e. by opening the box and removing frames, just by looking through the flight hole or something in between). All other fields are optional to not discourage beekeepers from participating in the project. For an overview of the schema see table <a href="data-profiling-and-assessment-of-data-quality.html#tab:inspectiontable">3.3</a>.</p>
+<table>
+<caption><span id="tab:inspectiontable">Table 3.3: </span>Inspections database schema</caption>
+<colgroup>
+<col width="15%" />
+<col width="70%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">variable.name</th>
+<th align="left">description</th>
+<th align="left">type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">inspection_id</td>
+<td align="left">unique identifier of the inspection</td>
+<td align="left">integer</td>
+</tr>
+<tr class="even">
+<td align="left">created_at</td>
+<td align="left">date of submission</td>
+<td align="left">POSIX date-time</td>
+</tr>
+<tr class="odd">
+<td align="left">deleted_at</td>
+<td align="left">time of deletion, NULL otherwise</td>
+<td align="left">POSIX date-time</td>
+</tr>
+<tr class="even">
+<td align="left">impression</td>
+<td align="left">overall impression (from the inspection in general) – three smileys</td>
+<td align="left">integer</td>
+</tr>
+<tr class="odd">
+<td align="left">attention</td>
+<td align="left">does the hive require attention?</td>
+<td align="left">Boolean</td>
+</tr>
+<tr class="even">
+<td align="left">notes</td>
+<td align="left">textual notes on the inspection</td>
+<td align="left">string</td>
+</tr>
+<tr class="odd">
+<td align="left">reminder</td>
+<td align="left">textual notes to be sent along with the calendar reminder for the next inspection</td>
+<td align="left">text</td>
+</tr>
+<tr class="even">
+<td align="left">category_id</td>
+<td align="left">identifier for the input field/variable</td>
+<td align="left">integer</td>
+</tr>
+<tr class="odd">
+<td align="left">value</td>
+<td align="left">value</td>
+<td align="left">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">category_input_id</td>
+<td align="left">identifier for the input type</td>
+<td align="left">integer</td>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">textual description of the category input ID</td>
+<td align="left">string</td>
+</tr>
+<tr class="even">
+<td align="left">translation</td>
+<td align="left">textual description of the category ID – not unique!</td>
+<td align="left">string</td>
+</tr>
+<tr class="odd">
+<td align="left">hive_id</td>
+<td align="left">unique key of the hive – one hive can contain multiple sensor kits</td>
+<td align="left">integer</td>
+</tr>
+<tr class="even">
+<td align="left">key</td>
+<td align="left">unique key of the sensor kit (as in sensor dataset)</td>
+<td align="left">string</td>
+</tr>
+</tbody>
+</table>
+<p>For the time period since February 2019 the database contains 18495 rows, but since some were test entries which were later deleted, this can be reduced to only 16239 data entries coming from 1099 inspections. However, a large number of records were prepared by beekeepers who do not have sensors installed in their hives or have not yet entered this information in the app. Excluding also those observations without a reference to a sensor key, the sample is further reduced to 6927 observations from 417 inspections.<br />
+Given that most fields are optional, there is considerable difference in the number of observations, see figure <a href="additional-charts.html#fig:frameschange">A.12</a> in the appendix. In around half of the inspections the beekeepers indicate whether the bees are foraging pollen, and whether frames have been added or removed. Data availability is also acceptable regarding the stocks of honey and pollen, the status of the brood and whether the colony is infested with Varroa mite. The most available data type is logical.<br />
+For the considered time period, the number of inspections per hive also varies considerably. More than half of all inspections were recorded for ten hives. For the hives with more than one logged inspection the interval between inspections is typically less than weekly, but for sometimes up to a month can pass until the next inspection.
+Given the design of the mobile app, there is a logical functional dependence between related fields in most cases: for example, the beekeeper can only enter the number of frames that were added or removed during an inspection if he/she checked “Yes” in the parent box “Inserted/Removed Frames”. However, there are number of cases were the app allows for internally inconsistent responses, which should be corrected in a future version: for example, it is not physically possible to add or remove frames if the type of inspection was by only observing the flight entrance or just tilting the cover. Yet, two inspections can be found in the dataset where supposedly the cover was only tilted, but it was recorded that frames were added or removed.<br />
+The categories blocks “Swarming” and “Swarm prevention” are handled separately, which can lead to records where the destruction of queen cells as a swarm prevention method was recorded, but at the same time there was either no status reported on the building of queen cells or it was recorded as not occurring. In the current dataset this inconsistency can be observed in 30 cases.<br />
+Further, some fields are perhaps not clear to the beekeepers. The counters for adding or removing frames allow for negative numbers, thus the designers expected the users to record negative numbers for removed frames and positive numbers for added frames but this may not be how beekeepers have understood this. Currently the value distribution for the seven types of frames is rather balanced with values both on the positive and negative side, so from that point of view this appears fine. When combining sensor data from the scale with inspection data, however, there are cases of inspections with a reported net addition of frames in which the overall weight has dropped (see figure 44), which could indicate a wrong reporting<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>. In any case, the menu should be designed somewhat clearer, perhaps with an immediate response that a positive number is interpreted as an addition while a negative is a removal.</p>
+<p>When using information from the inspection database as labels for classification models, one has to consider that there is some uncertainty surrounding the timestamp of the inspections. By default, the time recorded is the time when the inspection menu was opened, which should typically be after the inspection was completed. If the beekeeper choses to manipulate the date this may result in a timing closer to the change in weight, but in case the time is not remembered correctly, it may as well be recorded earlier than the change in weight. A mis-recording could potentially explain the position of the fourth inspection in figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:weightinspection">3.21</a>. As most states of or events within the colony, however, likely take longer than just a few minutes, the information about the colony entered in the inspection log is probably valid for a longer time before (or around) the time of the inspection.</p>
+<div class="figure" style="text-align: center"><span id="fig:weightinspection"></span>
+<img src="charts/weight_and_inspections.png" alt="Time series of weight with inspections" width="856" />
+<p class="caption">
+Figure 3.21: Time series of weight with inspections
+</p>
+</div>
+<p>For the available inconsistent records, the data can be corrected directly if applicable, or the beekeepers could be contacted by the Bee Observer project team to ask about the inspection.<br />
+As regards the time stamp, a method of anomaly detection might be well-placed to detect at least the strong movements in weight which are unlikely to be caused by the bees themselves.</p>
+</div>
+<div id="metadata" class="section level2">
+<h2><span class="header-section-number">3.3</span> Apiary and hive metadata as a means to integrate data from external sources</h2>
+<p>In order to record an inspection, beekeepers first need to create their apiary and its individual hives in the database. Only two variables are mandatory: the chosen name of the apiary and the type of hive. The optional variables at the apiary level relate to the geolocation, while at the hive level the beekeepers can specify the number of layers used in the hive for brood and honey and the number of frames per layer. Finally, specifics about the queen of the hive can be specified, such as the race, the birthdate and whether her wings have been clipped. The menus of the app are shown in figure <a href="additional-charts.html#fig:menuhive">A.9</a> in the appendix.</p>
+<p>This metadata can provide useful information for the analysis of the sensor data. First of all, the mandatory information on the hive type can help in cleaning erroneous sensor data for weight more precisely. As the various hives are made from different materials are differently sized and may have their capacity used to different degrees, the lower threshold for the valid weight observations can vary significantly.<br />
+Second, with available geolocation data, one is able to calculate the position of the sun at a given time, and retrieve other external data that may be useful in explaining developments in a bee colony. As there have been increasing cases of colony theft across Germany (<span class="citation">Meidel (<a href="#ref-Meidel.942020" role="doc-biblioref">n.d.</a>)</span>) the general terms of service of the Bee Observer project included a data protection clause limiting the use of geolocation data only at a lower precision. Specifically, we have coordinates rounded at one decimal, which amounts to an uncertainty of up to 11km. Within the inspections dataset there are currently 66 sensor kits at various locations in Germany (mostly the western Länder and Berlin) and the Netherlands, as shown in figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:hivemap">3.22</a>, and two in the USA.</p>
+<div class="figure" style="text-align: center"><span id="fig:hivemap"></span>
+<img src="charts/hive_locations.png" alt="Location of hives" width="472" />
+<p class="caption">
+Figure 3.22: Location of hives
+</p>
+</div>
+<div id="determining-the-sun-level" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Determining the sun level</h3>
+<p>The European Honey Bee has a diurnal cycle. Foraging worker bees cannot see well in the dark and research has also shown that they require a certain amount of rest (i.e. sleep) to function well during the day (<span class="citation">Kaiser and Steiner-Kaiser (<a href="#ref-Kaiser.1983" role="doc-biblioref">1983</a>)</span>). As a consequence, the activity within a hive will look different during day and night. Given the astrological cycle of the Earth around the sun, these daily cycles will change over the year, with days being longest and the sun’s position highest at the end of June at summer solstice. Afterwards the days become shorter and the sun’s position lower, reaching their trough at the end of December at winter solstice and so on. To get cleaner signals over the general trend of a colony it would be useful remove the changing daily seasonality from the trend. Time-series methods such as Seasonal and Trend decomposition using Loess (STL) (<span class="citation">Cleveland et al. (<a href="#ref-Cleveland.1990" role="doc-biblioref">1990</a>)</span>) are able to deal with slowly changing seasonal patterns, but require complete sequences of data, which is not always given in this case with sometimes long periods of sensor outages. Thus, it may be preferable to directly determine the cycles based on the position of the sun. The position of the sun can be calculated with a mathematical formula using the coordinates and the date-time information. The small uncertainty surrounding the exact location in this case should be negligible. The package suncalc (<span class="citation">Thieurmel and Elmarhraoui (<a href="#ref-Thieurmel.2019" role="doc-biblioref">2019</a>)</span>) provides a simple R implementation for these computations. Figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:sun">3.23</a> for a selected hive during June 2020 illustrates this daily cycle well: around sunrise, the worker bees leave the hive (which may result in further decrease in weight), but throughout the day bring nectar and pollen to the hive, leading to a peak in weight around sunset. Overnight the hive loses weight at a stable rate, as the stored honey dries and the bees’ bodies burn energy and evaporate humidity.</p>
+<div class="figure" style="text-align: center"><span id="fig:sun"></span>
+<img src="charts/sun_level.png" alt="Sun position and weight for a selected hive during the foraging period" width="856" />
+<p class="caption">
+Figure 3.23: Sun position and weight for a selected hive during the foraging period
+</p>
+</div>
+</div>
+<div id="meteorological-data" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Meteorological data</h3>
+<p>Not only the day-night cycle can affect bee behavior, also meteorological phenomena can have an impact. While bees can still fly when it rains, flying during rain or even just mist is more difficult: water can accumulate on the bee’s body and thus increase its weight. Heavy raindrops can push a bee down and throw it off its course. Thus, during longer periods of rainfall bees typically do not go foraging and stay in the hive, as shown in figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:rainstop">3.24</a>, where a rainy week is interrupting a period of weight increase in the foraging season. The figure also shows one more potential issue of sensor quality: the sudden drop in weight around 1 May during the rainiest time could be a sign of a sensor malfunction due to the scale becoming wet or at least too damp. The only beekeeper inspection during the period shown was recorded at this beehive on 18 April, with a much lower weight fluctuation.
+The German Weather Service (DWD) provides regularly updated data on precipitation at various intervals from multiple weather stations throughout Germany, with the frequency going as high as per minute, reported from almost a thousand stations. Data on air temperature and the dew point are available at hourly frequency from around 500 stations. The datasets can be conveniently accessed from R using the rdwd package (<span class="citation">Boessenkool (<a href="#ref-Boessenkool.2020" role="doc-biblioref">2020</a>)</span>). Due to the uncertainty surrounding the exact location of the hive, it may be useful to obtain data from multiple stations in the vicinity and combine them. Even in case the exact location was known, heavy rainfall at the nearest weather station may still be a very localized event that potentially would not affect the monitored colony at all.</p>
+<div class="figure" style="text-align: center"><span id="fig:rainstop"></span>
+<img src="charts/foraging_stop_rain.png" alt="Foraging behavior and precipitation" width="856" />
+<p class="caption">
+Figure 3.24: Foraging behavior and precipitation
+</p>
+</div>
+<p>Joining the obscured hive locations with the location of the weather stations, one can see that within a radius of 20km around the hive there is at least one weather station for all hives in Germany. In case of precipitation data at one-minute frequency the majority of hives have two and more weather stations nearby (see figure <a href="additional-charts.html#fig:meteo">A.13</a> in the appendix).
+Air pressure recorded by the sensor in the hive is typically lower during stronger rainfalls at a nearby station (see figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:rainpressure">3.25</a>) and thus could be an indicator of rain, but a passing low-pressure area does not necessarily mean it indeed rained and if yes, at the same time. For the majority of hives with available location and pressure data, the correlation coefficient between pressure and cumulative daily rainfall ranges between -0.2 and -0.4 Thus, to control for the effect of rainfall on bee behavior in a model, using actual meteorological data should be preferable over just the pressure data from the sensor kits themselves.</p>
+<div class="figure" style="text-align: center"><span id="fig:rainpressure"></span>
+<img src="charts/rain_and_pressure.png" alt="Cumulative daily precipitation amounts and air pressure in the hive" width="856" />
+<p class="caption">
+Figure 3.25: Cumulative daily precipitation amounts and air pressure in the hive
+</p>
+</div>
+<p>Temperature data from an official source can also serve as a cross-check of the data quality for the outside temperature sensor. In figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:dwdcheck">3.26</a>, for example, one can observe a close co-movement between the sensor data and the measurements from surrounding weather stations until April 2020, when the sensor data significantly deviate upwards, likely due to sensor failure.</p>
+<div class="figure" style="text-align: center"><span id="fig:dwdcheck"></span>
+<img src="charts/temperature_check_DWD.png" alt="Outside temperature measured from sensor vs. official source" width="856" />
+<p class="caption">
+Figure 3.26: Outside temperature measured from sensor vs. official source
+</p>
+</div>
+<p>While at present, the DWD does not offer weather forecasts in an easily accessible format, this may be added in the future, allowing for potential use cases like suggestions for the ideal timing of inspections (before it rains).</p>
+</div>
+<div id="phenological-data" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Phenological data</h3>
+<p>Around 400 DWD weather stations also report on the stage of the lifecycle of various plants in the vicinity on a daily basis. Among these plants there are also eight<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a> which have been identified as useful for pollinators (<span class="citation">(“Pflanzen Für Bestäuber,” <a href="#ref-PestizidAktionsNetzwerkeV" role="doc-biblioref">n.d.</a>)</span>), as a source for pollen, nectar or both. Only for few plants the observers report both the beginning and end of the blossoming, while for most of the plants, only the start is recorded. Exploratory data analysis shows that one can indeed map the most productive time of the bee colony to the status of the environment. Assuming a consistent duration of the blossoming period of six weeks, figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:pheno">3.27</a> shows higher weight gains in periods when multiple plants are blossoming. Relevant seem to be in particular dandelion, sweet cherry, rapeseed and apple (starting to blossom around April to May).</p>
+<div class="figure" style="text-align: center"><span id="fig:pheno"></span>
+<img src="charts/weight_and_pheno.png" alt="Joining weight and phenological data" width="856" />
+<p class="caption">
+Figure 3.27: Joining weight and phenological data
+</p>
+</div>
+<p>Knowledge about the state of the surrounding flora could be useful in focusing the models and detection algorithms to this crucial period and notify the beekeepers if there is no significant weight gain.</p>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-BoschSensortecGmbH.572020">
+<p>“BME280.” n.d. <a href="https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/">https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/</a>.</p>
+</div>
+<div id="ref-Boessenkool.2020">
+<p>Boessenkool, Berry. 2020. “Rdwd: Select and Download Climate Data from ’Dwd’ (German Weather Service).” <a href="https://CRAN.R-project.org/package=rdwd">https://CRAN.R-project.org/package=rdwd</a>.</p>
+</div>
+<div id="ref-Cheng.2018">
+<p>Cheng, Hongju, Danyang Feng, Xiaobin Shi, and Chongcheng Chen. 2018. “Data Quality Analysis and Cleaning Strategy for Wireless Sensor Networks.” <em>EURASIP Journal on Wireless Communications and Networking</em> 2018 (1). <a href="https://doi.org/10.1186/s13638-018-1069-6">https://doi.org/10.1186/s13638-018-1069-6</a>.</p>
+</div>
+<div id="ref-Cleveland.1990">
+<p>Cleveland, Robert. B., William S. Cleveland, Jean E. McRae, and Irma Terpenning. 1990. “STL : A Seasonal-Trend Decomposition Procedure Based on Loess.” <em>Journal of Office Statistics</em> 6 (1): 3–73. <a href="https://ci.nii.ac.jp/naid/10014960531/">https://ci.nii.ac.jp/naid/10014960531/</a>.</p>
+</div>
+<div id="ref-Doull.1976">
+<p>Doull, Keith M. 1976. “The Effects of Different Humidities on the Hatching of the Eggs of Honeybees.” <em>Apidologie</em> 7 (1): 61–66. <a href="https://www.semanticscholar.org/paper/THE-EFFECTS-OF-DIFFERENT-HUMIDITIES-ON-THE-HATCHING-Doull/89eefe19fd0706f8648d7e4ea23a84aacef64ec9">https://www.semanticscholar.org/paper/THE-EFFECTS-OF-DIFFERENT-HUMIDITIES-ON-THE-HATCHING-Doull/89eefe19fd0706f8648d7e4ea23a84aacef64ec9</a>.</p>
+</div>
+<div id="ref-MaximIntegrated.592020">
+<p>“DS18S20 1-Wire Parasite-Power Digital Thermometer.” n.d. <a href="https://www.maximintegrated.com/en/products/sensors/DS18S20.html">https://www.maximintegrated.com/en/products/sensors/DS18S20.html</a>.</p>
+</div>
+<div id="ref-Hiverize.5162020">
+<p>Hiverize. n.d. “Einbau Der Temperatursensoren.” <a href="https://hiverize.org/einbautemperatursensor/">https://hiverize.org/einbautemperatursensor/</a>.</p>
+</div>
+<div id="ref-Human.2006">
+<p>Human, Hannelie, Sue W. Nicolson, and Vincent Dietemann. 2006. “Do Honeybees, Apis Mellifera Scutellata, Regulate Humidity in Their Nest?” <em>Die Naturwissenschaften</em> 93 (8): 397–401. <a href="https://doi.org/10.1007/s00114-006-0117-y">https://doi.org/10.1007/s00114-006-0117-y</a>.</p>
+</div>
+<div id="ref-InfluxData.332020">
+<p>InfluxData. n.d. “InfluxDB Open Source Time Series Database.” <a href="https://www.influxdata.com/products/influxdb-overview/">https://www.influxdata.com/products/influxdb-overview/</a>.</p>
+</div>
+<div id="ref-Kaiser.1983">
+<p>Kaiser, W., and J. Steiner-Kaiser. 1983. “Neuronal Correlates of Sleep, Wakefulness and Arousal in a Diurnal Insect.” <em>Nature</em> 301 (5902): 707–9. <a href="https://doi.org/10.1038/301707a0">https://doi.org/10.1038/301707a0</a>.</p>
+</div>
+<div id="ref-Kuhn.2019">
+<p>Kuhn, Max, and Kjell Johnson. 2019. <em>Feature Engineering and Selection: A Practical Approach for Predictive Models</em>. Chapman &amp; Hall/Crc Data Science Series. CRC Press. <a href="https://books.google.de/books?id=q5alDwAAQBAJ">https://books.google.de/books?id=q5alDwAAQBAJ</a>.</p>
+</div>
+<div id="ref-Meidel.942020">
+<p>Meidel, Marian. n.d. “Offenbach: Diebesbanden Klauen Bienenvölker Im Frühling – Immer Wieder.” <em>Op-Online.de</em>. <a href="https://www.op-online.de/offenbach/offenbach-diebesbanden-klauen-bienenvoelker-immer-wieder-zr-13645987.html">https://www.op-online.de/offenbach/offenbach-diebesbanden-klauen-bienenvoelker-immer-wieder-zr-13645987.html</a>.</p>
+</div>
+<div id="ref-Moritz.2017">
+<p>Moritz, Steffen, and Thomas Bartz-Beielstein. 2017. “ImputeTS: Time Series Missing Value Imputation in R.” <em>The R Journal</em> 9 (1): 207–18. <a href="https://doi.org/10.32614/RJ-2017-009">https://doi.org/10.32614/RJ-2017-009</a>.</p>
+</div>
+<div id="ref-PestizidAktionsNetzwerkeV">
+<p>“Pflanzen Für Bestäuber.” n.d. <a href="http://www.pan-germany.org/download/biodiversitaet/pflanzen_fuer_bestaeuber.pdf">http://www.pan-germany.org/download/biodiversitaet/pflanzen_fuer_bestaeuber.pdf</a>.</p>
+</div>
+<div id="ref-Pycom.28.09.2020">
+<p>Pycom. n.d. “Fipy - Pycom.” <a href="https://pycom.io/product/fipy/">https://pycom.io/product/fipy/</a>.</p>
+</div>
+<div id="ref-Senger.2020">
+<p>Senger, Diren, Carolin Johannsen, Alexandros Melemenidis, Alexander Goncharskiy, and Thorsten Kluss. 2020. “Unsupervised Anomaly Detection on Multisensory Data from Honey Bee Colonies.” In <em>2020 Ieee International Conference on Data Mining (Icdm)</em>.</p>
+</div>
+<div id="ref-BoscheWagetechnik.532020">
+<p>“Single Point Load Cell H40a.” n.d. <a href="https://www.bosche.eu/en/scale-components/load-cells/single-point-load-cell/single-point-load-cell-h40a">https://www.bosche.eu/en/scale-components/load-cells/single-point-load-cell/single-point-load-cell-h40a</a>.</p>
+</div>
+<div id="ref-Thieurmel.2019">
+<p>Thieurmel, Benoit, and Achraf Elmarhraoui. 2019. “Suncalc: Compute Sun Position, Sunlight Phases, Moon Position and Lunar.” <a href="https://CRAN.R-project.org/package=suncalc">https://CRAN.R-project.org/package=suncalc</a>.</p>
+</div>
+<div id="ref-Wickham.2019">
+<p>Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” <em>Journal of Open Source Software</em> 4 (43). <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.</p>
+</div>
+<div id="ref-Zacepins.2016">
+<p>Zacepins, Aleksejs, Armands Kviesis, Egils Stalidzans, Marta Liepniece, and Jurijs Meitalovs. 2016. “Remote Detection of the Swarming of Honey Bee Colonies by Single-Point Temperature Monitoring.” <em>Biosystems Engineering</em> 148: 76–80. <a href="https://doi.org/10.1016/j.biosystemseng.2016.05.012">https://doi.org/10.1016/j.biosystemseng.2016.05.012</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Influxdb is under continuous development: in the current beta branch, the system offers an alternative query language (flux) which already implements some of the described missing features, which would allow for a more streamlined data analysis pipeline going forward. However, some simple preprocessing such as filtering and down-sampling to a lower frequency can already be implemented using so-called “continuous queries” in the version currently available to the project.<a href="data-profiling-and-assessment-of-data-quality.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>At the time of writing the purchase price of all components together was just above 100 Euro.<a href="data-profiling-and-assessment-of-data-quality.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>The other variables include the calibration weight of the scale, however only with few observations, and the strength of the Wi-Fi signal.<a href="data-profiling-and-assessment-of-data-quality.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>This is a proxy, as influxQL does not allow for comparisons of numerical time series with NULL: in this column-oriented database system, if there is no value, there is no entry at all. The ratio is computed as the number of observations where the values of all our variables of interest are not equal to a specific value, divided by the number of observations for weight, the variable with the most observations.<a href="data-profiling-and-assessment-of-data-quality.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>The framework also contains indicators on the volatility and timeliness of the data However, as I have no physical access to any sensor kit, I cannot evaluate the timeliness of the data and thus focus in this section only on the first three indicators.<a href="data-profiling-and-assessment-of-data-quality.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>The month of July 2020 is chosen, as only six new sensor kits are added throughout the month, compared to more than a hundred existing ones.<a href="data-profiling-and-assessment-of-data-quality.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>This information is unfortunately not stored and is thus not available for a further cleaning to reduce the variable to pure developments in the weight of the bees and foraged food.<a href="data-profiling-and-assessment-of-data-quality.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>The temperature measured at the humidity sensor unit t, is excluded from this analysis: due to its position at the top of the hive it is more strongly correlated with the outside temperature and can thus easily reach high values during the summer, above those required in the brood nest.<a href="data-profiling-and-assessment-of-data-quality.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Given the different volatility of the variables we chose different gaps: humidity 1 hour; temperatures 10 minutes; weight 5 minutes; pressure 4 hours. For this thesis a linear interpolation was chosen. The linear interpolation has the advantage that it can be implanted at the level influx of the influxdb and would not be able to create values outside the plausible sensor ranges again.<a href="data-profiling-and-assessment-of-data-quality.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p>This is of course based on the simplified assumption that frames have the same weight when they are added to the hive as when they are removed and have the same weight across types of frames. Also, the changing of frames needs to be seen together with other beekeeping actions that influence weight, such as feeding and honey harvest.<a href="data-profiling-and-assessment-of-data-quality.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>Apple, sweet cherry, forsythia, dandelion, horse-chestnut, goat willow, corn and rapeseed.<a href="data-profiling-and-assessment-of-data-quality.html#fnref11" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="literature.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="use-cases-for-machine-learning-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["thesis_book.pdf", "thesis_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

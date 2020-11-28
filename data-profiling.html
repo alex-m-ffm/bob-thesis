@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>A Data profiling | Extracting insights from dirty data - A use case of multisensory data from beehives</title>
+  <meta name="description" content="This is my Master’s thesis in the study programme ‘Big Data &amp; Business Analytics’ at SRH Hochschule Heidelberg." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="A Data profiling | Extracting insights from dirty data - A use case of multisensory data from beehives" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is my Master’s thesis in the study programme ‘Big Data &amp; Business Analytics’ at SRH Hochschule Heidelberg." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Data profiling | Extracting insights from dirty data - A use case of multisensory data from beehives" />
+  
+  <meta name="twitter:description" content="This is my Master’s thesis in the study programme ‘Big Data &amp; Business Analytics’ at SRH Hochschule Heidelberg." />
+  
+
+<meta name="author" content="Alexandros Melemenidis" />
+
+
+<meta name="date" content="2020-10-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="references.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#objective"><i class="fa fa-check"></i><b>1.1</b> Objective</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#methodology"><i class="fa fa-check"></i><b>1.2</b> Methodology</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a><ul>
+<li class="chapter" data-level="2.1" data-path="literature.html"><a href="literature.html#short-introduction-to-apiology"><i class="fa fa-check"></i><b>2.1</b> Short introduction to apiology</a></li>
+<li class="chapter" data-level="2.2" data-path="literature.html"><a href="literature.html#first-steps-in-precision-beekeeping"><i class="fa fa-check"></i><b>2.2</b> First steps in precision beekeeping</a></li>
+<li class="chapter" data-level="2.3" data-path="literature.html"><a href="literature.html#useful-methods-of-machine-learning-from-other-domains"><i class="fa fa-check"></i><b>2.3</b> Useful methods of machine learning from other domains</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html"><i class="fa fa-check"></i><b>3</b> Data profiling and assessment of data quality</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#sensor-data"><i class="fa fa-check"></i><b>3.1</b> Sensor data</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#single-column-analysis"><i class="fa fa-check"></i><b>3.1.1</b> Single column analysis</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#initial-cleaning"><i class="fa fa-check"></i><b>3.1.2</b> Initial cleaning</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#multi-column-analysis"><i class="fa fa-check"></i><b>3.1.3</b> Multi-column analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#inspections-data"><i class="fa fa-check"></i><b>3.2</b> Inspections data</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#determining-the-sun-level"><i class="fa fa-check"></i><b>3.2.1</b> Determining the sun level</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#meteorological-data"><i class="fa fa-check"></i><b>3.2.2</b> Meteorological data</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#phenological-data"><i class="fa fa-check"></i><b>3.2.3</b> Phenological data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html"><i class="fa fa-check"></i><b>4</b> Use cases for machine learning methods</a><ul>
+<li class="chapter" data-level="4.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#supervised-swarm-detection"><i class="fa fa-check"></i><b>4.1</b> Supervised swarm detection</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#training-a-classification-model"><i class="fa fa-check"></i><b>4.1.1</b> Training a classification model</a></li>
+<li class="chapter" data-level="4.1.2" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#importance-of-swarm-prevention"><i class="fa fa-check"></i><b>4.1.2</b> Importance of swarm prevention</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#other-use-cases-for-supervised-methods"><i class="fa fa-check"></i><b>4.2</b> Other use cases for supervised methods</a></li>
+<li class="chapter" data-level="4.3" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#unsupervised-anomaly-detection"><i class="fa fa-check"></i><b>4.3</b> Unsupervised anomaly detection</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="conclusion-and-outlook.html"><a href="conclusion-and-outlook.html"><i class="fa fa-check"></i><b>5</b> Conclusion and Outlook</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="data-profiling.html"><a href="data-profiling.html"><i class="fa fa-check"></i><b>A</b> Data profiling</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Extracting insights from dirty data - A use case of multisensory data from beehives</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-profiling" class="section level1">
+<h1><span class="header-section-number">A</span> Data profiling</h1>
+<p>For most subsequent observations, the interval is five seconds - the IQR is a line rather than a box in the below chart. Sometimes, however, the intervals are shorter or (much) longer.</p>
+<div class="figure" style="text-align: center"><span id="fig:intervals"></span>
+<img src="charts/intervals_boxplot.png" alt="Time gaps between non-missing observations" width="856" />
+<p class="caption">
+Figure A.1: Time gaps between non-missing observations
+</p>
+</div>
+<p>The low level of overall data correctness is largely driven by the by the high occurrence of incomplete data. Looking at the proxied correctness for individual variables, even the least correct variable, weight, is at around 90%.</p>
+<div class="figure" style="text-align: center"><span id="fig:correctnessvar"></span>
+<img src="charts/data_correctness_ind.png" alt="Data correctness at variable level" width="856" />
+<p class="caption">
+Figure A.2: Data correctness at variable level
+</p>
+</div>
+<p>Regarding the thresholds used in the rule-based cleaning algorithm, these are based on the most extreme “naturally” occurring events - the beekeeper inspections. In the below chart, weight drops by more than 12kg per Minute when a frame is removed. At the same time, due to the entry of dry air, humidity is dropping rapidly, while the bees are also heating up under stress (the temperature sensor at the humidity unit heats up to over 50° possibly because it is exposed to direct sun).</p>
+<div class="figure" style="text-align: center"><span id="fig:inspectionschanges"></span>
+<img src="charts/inspections_changes.png" alt="Variable fluctuations during a beekeeper inspection" width="856" />
+<p class="caption">
+Figure A.3: Variable fluctuations during a beekeeper inspection
+</p>
+</div>
+<p>This is a case of weight developments that cannot be reconciled with normal behaviour. Likely the sensor is not correctly calibrated (or the values belong to a different sensor).</p>
+<div class="figure" style="text-align: center"><span id="fig:weightanomaly"></span>
+<img src="charts/anomalous_weight_fluctuations.png" alt="Anomalous weight fluctuations" width="856" />
+<p class="caption">
+Figure A.4: Anomalous weight fluctuations
+</p>
+</div>
+<p>The analysis of available information of incomplete data suggests that the thermometers fail more frequently during colder outside temperatures and with higher humidity. Also the last valid data point before a data gap tends to have a lower temperatures than the distribution of all valid values.</p>
+<div class="figure" style="text-align: center"><span id="fig:violinh"></span>
+<img src="charts/violin_h_t_missing.png" alt="Humidity and missingness" width="856" />
+<p class="caption">
+Figure A.5: Humidity and missingness
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:violint"></span>
+<img src="charts/violin_t_o_t_missing.png" alt="Outside temperature and missingness" width="856" />
+<p class="caption">
+Figure A.6: Outside temperature and missingness
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:menuapiary"></span>
+<img src="charts/Create_Apiary.jpg" alt="App menus to create apiary" width="540" />
+<p class="caption">
+Figure A.7: App menus to create apiary
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:menuhive"></span>
+<img src="charts/Create_Hive.jpg" alt="App menus to create hive" width="540" />
+<p class="caption">
+Figure A.8: App menus to create hive
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:menuinspections"></span>
+<img src="charts/inspections_full.jpg" alt="App menus to record an inspection" width="405" />
+<p class="caption">
+Figure A.9: App menus to record an inspection
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:inspectionscount"></span>
+<img src="charts/inspections_count_large.png" alt="Valid observations per inspection field" width="856" />
+<p class="caption">
+Figure A.10: Valid observations per inspection field
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:frameschange"></span>
+<img src="charts/weight_and_frames_changed.png" alt="Frames changed during inspections and impact on weight" width="856" />
+<p class="caption">
+Figure A.11: Frames changed during inspections and impact on weight
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:meteo"></span>
+<img src="charts/meteo_data_nearby.png" alt="Availability of meteorological data near the beehives" width="856" />
+<p class="caption">
+Figure A.12: Availability of meteorological data near the beehives
+</p>
+</div>
+
+<div id="refs" class="references">
+<div>
+<p>Anand, N., V. B. Raj, M. S. Ullas, and A. Srivastava. 2018. “Swarm Detection and Beehive Monitoring System Using Auditory and Microclimatic Analysis.” In <em>2018 3rd International Conference on Circuits, Control, Communication and Computing (I4c)</em>, 1–4. <a href="https://doi.org/10.1109/CIMCA.2018.8739710">https://doi.org/10.1109/CIMCA.2018.8739710</a>.</p>
+</div>
+<div>
+<p>“Arnia - Remote Bee Hive Monitoring System.” n.d. <a href="https://www.arnia.co.uk/">https://www.arnia.co.uk/</a>.</p>
+</div>
+<div>
+<p>“Beewise.” n.d. <a href="https://www.beewise.ag/">https://www.beewise.ag/</a>.</p>
+</div>
+<div>
+<p>Breiman, Leo. 2001. “Random Forests.” <em>Machine Learning</em> 45 (1): 5–32. <a href="https://doi.org/10.1023/A:1010933404324">https://doi.org/10.1023/A:1010933404324</a>.</p>
+</div>
+<div>
+<p>Breiman, Leo, Jerome Friedman, Charles J. Stone, and R. A. Olshen. 1998. <em>Classification and Regression Trees</em>. Repr. Boca Raton: Chapman &amp; Hall.</p>
+</div>
+<div>
+<p>Dineva, Kristina, and Tatiana Atanasova. 2018. “ICT-Based Beekeeping Using Iot and Machine Learning.” In <em>Developments in Language Theory</em>, edited by Mizuho Hoshi and Shinnosuke Seki, 11088:132–43. Lecture Notes in Computer Science. Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-319-99447-5%7B\textunderscore%20%7D12">https://doi.org/10.1007/978-3-319-99447-5{\textunderscore }12</a>.</p>
+</div>
+<div>
+<p>Edwards Murphy, Fiona, Michele Magno, Liam O’Leary, Killian Troy, Pádraig M. Whelan, and Emanuel M. Popovici. 2015. “Big Brother for Bees (3B) — Energy Neutral Platform for Remote Monitoring of Beehive Imagery and Sound.” In <em>2015 6th International Workshop on Advances in Sensors and Interfaces (Iwasi)</em>, 106–11. <a href="https://doi.org/10.1109/IWASI.2015.7184943">https://doi.org/10.1109/IWASI.2015.7184943</a>.</p>
+</div>
+<div>
+<p>Edwards Murphy, Fiona, Michele Magno, Padraig Whelan, and Emanuel Popo Vici. 2015. “B+WSN: Smart Beehive for Agriculture, Environmental, and Honey Bee Health Monitoring — Preliminary Results and Analysis.” In <em>2015 Ieee Sensors Applications Symposium (Sas)</em>, 1–6. IEEE. <a href="https://doi.org/10.1109/SAS.2015.7133587">https://doi.org/10.1109/SAS.2015.7133587</a>.</p>
+</div>
+<div>
+<p>Edwards-Murphy, Fiona, Michele Magno, Pádraig M. Whelan, John O’Halloran, and Emanuel M. Popovici. 2016. “B+WSN: Smart Beehive with Preliminary Decision Tree Analysis for Agriculture and Honey Bee Health Monitoring.” <em>Computers and Electronics in Agriculture</em> 124: 211–19. <a href="https://doi.org/10.1016/j.compag.2016.04.008">https://doi.org/10.1016/j.compag.2016.04.008</a>.</p>
+</div>
+<div>
+<p>Estrella, Arturo, and Gikas A. Hardouvelis. 1991. “The Term Structure as a Predictor of Real Economic Activity.” <em>The Journal of Finance</em> 46 (2): 555–76. <a href="http://www.jstor.org/stable/2328836">http://www.jstor.org/stable/2328836</a>.</p>
+</div>
+<div>
+<p>Filonov, Pavel, Andrey Lavrentyev, and Artem Vorontsov. 2016. “Multivariate Industrial Time Series with Cyber-Attack Simulation: Fault Detection Using an Lstm-Based Predictive Data Model.” <a href="https://arxiv.org/pdf/1612.06676">https://arxiv.org/pdf/1612.06676</a>.</p>
+</div>
+<div>
+<p>Friedman, Jerome H. 2001. “Greedy Function Approximation: A Gradient Boosting Machine.” <em>The Annals of Statistics</em> 29 (5): 1189–1232. <a href="https://doi.org/10.1214/aos/1013203451">https://doi.org/10.1214/aos/1013203451</a>.</p>
+</div>
+<div>
+<p>Goodfellow, Ian, Yoshua Bengio, and Aaron Courville. 2016. <em>Deep Learning</em>. MIT Press.</p>
+</div>
+<div>
+<p>“Innovative Beehive Monitoring System by Pollenity.” n.d. <a href="https://pollenity.com/">https://pollenity.com/</a>.</p>
+</div>
+<div>
+<p>James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. 2017. <em>An Introduction to Statistical Learning: With Applications in R</em>. Corrected at 8th printing. Springer Texts in Statistics. New York; Heidelberg; Dordrecht; London: Springer.</p>
+</div>
+<div>
+<p>Malhotra, Pankaj, Vishnu TV, Anusha Ramakrishnan, Gaurangi Anand, Lovekesh Vig, Puneet Agarwal, and Gautam Shroff. 2016. “Multi-Sensor Prognostics Using an Unsupervised Health Index Based on Lstm Encoder-Decoder.” <a href="https://arxiv.org/pdf/1608.06154">https://arxiv.org/pdf/1608.06154</a>.</p>
+</div>
+<div>
+<p>Markovic, Dusan, Uros Pesovic, Sladjana Djurasevic, and Sinisa Randjic. 2016. “Decision Support System for Temperature Monitoring in Beehives.” <em>0354-9542</em> 21 (42): 135–44. <a href="https://doi.org/10.5937/AASer1642135M">https://doi.org/10.5937/AASer1642135M</a>.</p>
+</div>
+<div>
+<p>Rosenkranz, Peter, Pia Aumeier, and Bettina Ziegelmann. 2010. “Biology and Control of Varroa Destructor.” <em>Journal of Invertebrate Pathology</em> 103 Suppl 1: S96–119. <a href="https://doi.org/10.1016/j.jip.2009.07.016">https://doi.org/10.1016/j.jip.2009.07.016</a>.</p>
+</div>
+<div>
+<p>“Solutionbee.” n.d. <a href="https://solutionbee.com/">https://solutionbee.com/</a>.</p>
+</div>
+<div>
+<p>Wikipedia, ed. 2020. “Western Honey Bee.” <a href="https://en.wikipedia.org/w/index.php?title=Western_honey_bee&amp;oldid=953816884">https://en.wikipedia.org/w/index.php?title=Western_honey_bee&amp;oldid=953816884</a>.</p>
+</div>
+<div>
+<p>“World’s Best Smart Beehive Monitoring System - Gobuzzr.” n.d. <a href="https://www.gobuzzr.com/">https://www.gobuzzr.com/</a>.</p>
+</div>
+<div>
+<p>Zacepins, Aleksejs, Valters Brusbardis, Jurijs Meitalovs, and Egils Stalidzans. 2015. “Challenges in the Development of Precision Beekeeping.” <em>Biosystems Engineering</em> 130: 60–71. <a href="https://doi.org/10.1016/j.biosystemseng.2014.12.001">https://doi.org/10.1016/j.biosystemseng.2014.12.001</a>.</p>
+</div>
+<div>
+<p>Zacepins, Aleksejs, Armands Kviesis, Egils Stalidzans, Marta Liepniece, and Jurijs Meitalovs. 2016. “Remote Detection of the Swarming of Honey Bee Colonies by Single-Point Temperature Monitoring.” <em>Biosystems Engineering</em> 148: 76–80. <a href="https://doi.org/10.1016/j.biosystemseng.2016.05.012">https://doi.org/10.1016/j.biosystemseng.2016.05.012</a>.</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["thesis_book.pdf", "thesis_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

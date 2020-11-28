@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Use cases for machine learning methods | Extracting insights from dirty data - A use case of multisensory data from beehives</title>
+  <meta name="description" content="This is my Master’s thesis in the study programme ‘Big Data &amp; Business Analytics’ at SRH Hochschule Heidelberg." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Use cases for machine learning methods | Extracting insights from dirty data - A use case of multisensory data from beehives" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is my Master’s thesis in the study programme ‘Big Data &amp; Business Analytics’ at SRH Hochschule Heidelberg." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Use cases for machine learning methods | Extracting insights from dirty data - A use case of multisensory data from beehives" />
+  
+  <meta name="twitter:description" content="This is my Master’s thesis in the study programme ‘Big Data &amp; Business Analytics’ at SRH Hochschule Heidelberg." />
+  
+
+<meta name="author" content="Alexandros Melemenidis" />
+
+
+<meta name="date" content="2020-11-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-profiling-and-assessment-of-data-quality.html"/>
+<link rel="next" href="conclusion-and-outlook.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MSc Thesis - Bee Observer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#objective"><i class="fa fa-check"></i><b>1.1</b> Objective</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#methodology"><i class="fa fa-check"></i><b>1.2</b> Methodology</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a><ul>
+<li class="chapter" data-level="2.1" data-path="literature.html"><a href="literature.html#short-introduction-to-apiology"><i class="fa fa-check"></i><b>2.1</b> Short introduction to apiology</a></li>
+<li class="chapter" data-level="2.2" data-path="literature.html"><a href="literature.html#first-steps-in-precision-beekeeping"><i class="fa fa-check"></i><b>2.2</b> First steps in precision beekeeping</a></li>
+<li class="chapter" data-level="2.3" data-path="literature.html"><a href="literature.html#useful-methods-of-machine-learning-from-other-domains"><i class="fa fa-check"></i><b>2.3</b> Useful methods of machine learning from other domains</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html"><i class="fa fa-check"></i><b>3</b> Data profiling and assessment of data quality</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#sensor-data"><i class="fa fa-check"></i><b>3.1</b> Sensor data</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#single-column-analysis"><i class="fa fa-check"></i><b>3.1.1</b> Single column analysis</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#initial-cleaning"><i class="fa fa-check"></i><b>3.1.2</b> Initial cleaning</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#multi-column-analysis"><i class="fa fa-check"></i><b>3.1.3</b> Multi-column analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#inspections-data"><i class="fa fa-check"></i><b>3.2</b> Inspections data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#metadata"><i class="fa fa-check"></i><b>3.3</b> Apiary and hive metadata as a means to integrate data from external sources</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#determining-the-sun-level"><i class="fa fa-check"></i><b>3.3.1</b> Determining the sun level</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#meteorological-data"><i class="fa fa-check"></i><b>3.3.2</b> Meteorological data</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#phenological-data"><i class="fa fa-check"></i><b>3.3.3</b> Phenological data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html"><i class="fa fa-check"></i><b>4</b> Use cases for machine learning methods</a><ul>
+<li class="chapter" data-level="4.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#supervised-swarm-detection"><i class="fa fa-check"></i><b>4.1</b> Supervised swarm detection</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#training-a-classification-model"><i class="fa fa-check"></i><b>4.1.1</b> Training a classification model</a></li>
+<li class="chapter" data-level="4.1.2" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#importance-of-swarm-prevention"><i class="fa fa-check"></i><b>4.1.2</b> Importance of swarm prevention</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#other-use-cases-for-supervised-methods"><i class="fa fa-check"></i><b>4.2</b> Other use cases for supervised methods</a></li>
+<li class="chapter" data-level="4.3" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#unsupervised-anomaly-detection"><i class="fa fa-check"></i><b>4.3</b> Unsupervised anomaly detection</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="conclusion-and-outlook.html"><a href="conclusion-and-outlook.html"><i class="fa fa-check"></i><b>5</b> Conclusion and Outlook</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="additional-charts.html"><a href="additional-charts.html"><i class="fa fa-check"></i><b>A</b> Additional charts</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Extracting insights from dirty data - A use case of multisensory data from beehives</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="use-cases-for-machine-learning-methods" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Use cases for machine learning methods</h1>
+<p>As described before in section 2.2, the first implementations of sensor technologies in apiculture were often using simple decision rules to support the beekeepers. Examples for these simple rules are:</p>
+<ul>
+<li>Temperature increases inside the hive by more than 1°C compared to 30 minutes ago over multiple consecutive minutes: the colony is swarming (<span class="citation">Zacepins et al. (<a href="#ref-Zacepins.2016" role="doc-biblioref">2016</a>)</span>).<br />
+</li>
+<li>Lowest temperature inside the hive &lt; 5°C or highest temperature &gt; 36°C: unfavorable climate – alert sent to the beekeeper (<span class="citation">Markovic et al. (<a href="#ref-Markovic.2016" role="doc-biblioref">2016</a>)</span>) (<span class="citation">Edwards Murphy, Magno, O’Leary, et al. (<a href="#ref-EdwardsMurphy.2015b" role="doc-biblioref">2015</a>)</span>).</li>
+</ul>
+<p>These studies were, however, conducted at rather small scale (e.g. four hives for <span class="citation">Bayir and Albayrak (<a href="#ref-Bayir.2016" role="doc-biblioref">2016</a>)</span>, one hive over limited time for <span class="citation">Edwards Murphy, Magno, O’Leary, et al. (<a href="#ref-EdwardsMurphy.2015b" role="doc-biblioref">2015</a>)</span>) and under close supervision of the researchers to maintain a good data quality. While according to the project design of Bee Observer all hives in the project should have the same sensor setup and thus the same variables available, the data quality analysis in section 3.1 has shown that data availability is fluctuating over time, and due to the lack of control by the project team, some beekeepers have not even installed all three sensor components in their hives. Further, as shown earlier in figure <a href="data-profiling-and-assessment-of-data-quality.html#fig:warmest">3.13</a>, the center of the brood nest may move over longer periods, thus making it difficult to deduct the bee health state from the same temperature sensor. Lastly, previous research was based on data from hives in broadly the same geographical area, whereas in Bee Observer the data are sent from hives across Germany and even some other countries. Thus, colonies might be affected by different environmental influences in their regions which may affect their behavior, requiring adjustments to static rules.
+Instead of programming alert systems based on static rules it would be rather preferable to use flexible methods of machine learning to learn relationships between the variables that influence or are influenced by the behavior of the bees inside the hive.</p>
+<div id="supervised-swarm-detection" class="section level2">
+<h2><span class="header-section-number">4.1</span> Supervised swarm detection</h2>
+<p>One of the most obvious use cases of machine learning in beekeeping is to detect swarm events: If a swarm goes unnoticed, the part of the colony that left may either abandon the apiary or even die, and even if caught in time, both halves of the former colony are now weakened and are producing less honey over the remainder of the year. A mechanical tool to allow the beekeeper to quickly react, catch the swarm and give it a new hive will thus be of economic value.<br />
+Between April and June 2020, 13 swarm events were recorded in the beekeeping apps. Unfortunately, in only six cases were the sensor kits also active during the event. Thus, for the training of a classification model that could detect swarm events and warn the beekeeper in time, the sample size is still quite limited. Nonetheless, also in this limited sample<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>, we can make similar observations as <span class="citation">Anand et al. (<a href="#ref-Anand.2018" role="doc-biblioref">2018</a>)</span>, who could only observe one event, see figure <a href="use-cases-for-machine-learning-methods.html#fig:swarm">4.1</a>. Starting around half an hour before departure until the point when the swarming is concluded, a steady and significant increase in temperature is recorded in the center of the hive (but also at the other temperature sensors) as well as, albeit to a smaller degree, an increase in relative humidity. This happens as the part of the colony that is about to leave the hive is warming up their muscles for flying. Using the rough patterns observed in terms of changes in weight, temperature and humidity as well as the level of temperature, I was able to identify three more swarming events in the sensor data, which were not at all or not correctly entered in the dataset on inspections, raising the sample of sensor keys with swarms to eight. These three swarms were confirmed by the project colleagues as they contacted the respective beekeepers.</p>
+<div class="figure" style="text-align: center"><span id="fig:swarm"></span>
+<img src="charts/swarm.png" alt="Characteristics of a swarm event" width="856" />
+<p class="caption">
+Figure 4.1: Characteristics of a swarm event
+</p>
+</div>
+<p>The observed drops in weight also help us estimate the total weight of a bee colony: assuming around half the colony leaves the hive during the swarming, a full colony will weigh between 7kg and 10kg. Further, these observations also teach us about the length of the process and consequently at what maximum frequency we should analyze the data, at least for the detection of swarms: leaving the hive took between five and eight minutes for the five colonies observed, thus if one would aggregate the data too much, say into five-minute medians, the distinct temperature and humidity increases may be masked, and the steep, but nonetheless gradual, weight decreases would appear too abrupt. At least for the use case of swarm detection, a sampling rate of 1 minute seems appropriate.</p>
+<div id="training-a-classification-model" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Training a classification model</h3>
+<p>With the previous observations we learned that swarm events are characterized by a sequence of developments: temperature and humidity increase first, then, when the bees start departing and the weight measured on the scale starts decreasing, also humidity begins decreasing again. Given that warm air rises, the peak in temperature is only reached when the departure of the bees has been concluded, before it decreases again with some delay. Thus, to classify a swarm, it makes sense to not only consider level and growth rates of the variables at a given time, but also what happened in the minutes before. To this end we calculate 10-minute differences for humidity, weight and the three inner temperature sensors and the upper temperature sensor as well as the first ten lags for each of the growth rates. Following <span class="citation">Ziegler, Dettli, and Thommen (<a href="#ref-Ziegler.2019" role="doc-biblioref">2019</a>)</span>, who reported that swarming typically occurs during the day, we also add as predictor the time of day in seconds<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>. The analysis in section 3.1.1.2 showed that the central temperature sensors characterize well the developments in the brood nest, but across beehives and over time the center of the nest with the highest temperatures may be located closer to different sensors. Thus, instead of considering each thermometer reading inside the hive, I aggregate the information to the maximum of the three sensors, reducing the number of variables. As some of the sequences do not have complete observations on all temperature sensors and model training requires complete observations, this transformation will also improve the size the dataset. Also, due to the higher volatility of humidity compared to the other variables, its level and growth rates are less useful as swarm predictors. Thus, instead of the raw humidity data, a centered five-minute moving average is chosen for the training dataset. Finally, it is clear that the many lagged growth rates will be very closely related to one another and may likely not carry a lot of additional predictive power for a model. I thus apply an additional high correlation filter (removing variables correlated with others by more than <span class="math inline">\(\rho = 0.9\)</span>), which reduces the set of predictors to 13, namely the four sensor series, their 10-minute differences and their 10-minute differences lagged by ten minutes, as well as the time of day.</p>
+<p>Using additional predictors such as weather data as presented in section 3.3.2 could additionally be considered, but as the geocoordinates are not available for all beehives, this might result in a further reduction of the training dataset. Further, in the analyzed period it is likely that environmental conditions outside should in most cases be supportive of a swarm event as it should be sufficiently warm during the day and less likely to rain between April and July compared with the rest of the year. This should however be investigated next year with more and better data available.</p>
+<p>For the labels, we define as TRUE for the binary variable swarm the observations five minutes before and after the observation at the beginning of the departure (T=0 in figure <a href="use-cases-for-machine-learning-methods.html#fig:swarm">4.1</a>) and all other observations as FALSE. As one of the eight sensor kits has none of the temperature sensors reporting during the event, in the training dataset we include only seven swarm sequences plus the twenty minutes before and after, respectively. Further, to train the model not to mislabel quick weight drops during inspections as swarms, we include one hour of data during inspections and another hour of normal daily behavior. Excluding observations with missing values (in one case of a swarm the sensors were switched back on just shortly before) we end up with a quite imbalanced training dataset of 518 observations, of which 77 are labelled as swarms. Given the class imbalance of the dataset, I add as a final pre-processing step an up-sampling using the SMOTE algorithm (<span class="citation">Chawla et al. (<a href="#ref-Chawla.2002" role="doc-biblioref">2002</a>)</span>) which creates synthetic observations for swarms using the k-nearest neighbors of actual swarm observations.<br />
+A first attempt of modelling a classifier using logistic regression fails to converge even on the significantly reduced set of variables. After reducing dimensionality further to ten predictors using the greedy Wilks algorithm for feature selection, the model yields acceptable results on the training dataset, but fails on new data: For the other observations in the sample, which likely do not exhibit swarms, the predicted probabilities of a swarm occurring often reach very high levels, in particular during inspections. As a logistic model implies that the log odds increase in a linear relation to the predictors, the model interprets any strong decrease in weight as a sign of a swarm occurring, while in reality the weight decrease is bound to be the weight of around half a bee colony (i.e. something in the range of 4-5kg) and the temperature does not increase endlessly. Thus, a model allowing for non-linearities is likely a better option. I estimate a Random Forest model with the ranger package (<span class="citation">Wright and Ziegler (<a href="#ref-Wright.2017" role="doc-biblioref">2017</a>)</span>) using the default hyper-parameters (1000 trees, number of variables used for splitting mtry = 3 ≈ sqrt(13), minimum node size of 10) and test its accuracy in ten-fold cross-validation in folds with similar class relations. The accuracy in training is high with above 97% and an area under the ROC curve of over 99%. Given the high frequency of the data at one-minute intervals, a low relative false positive rate may still mean thousands of wrong notifications to the beekeeper, which we would want to avoid.</p>
+<div class="figure" style="text-align: center"><span id="fig:swarmprob"></span>
+<img src="charts/swarm_training_prob.png" alt="Swarm probabilities in training set" width="856" />
+<p class="caption">
+Figure 4.2: Swarm probabilities in training set
+</p>
+</div>
+<p>The visualization of the predicted swarm probabilities in the training set in figure <a href="use-cases-for-machine-learning-methods.html#fig:swarmprob">4.2</a> shows when the random forest and the logistic regression models react to actual swarm events.<br />
+To check the usefulness of our models, I also apply the trained models on the remaining unlabeled observations from the time period between April and July 2020. As no other swarms were entered in the dataset on inspections, one should not expect too many swarms to have occurred, and thus the models should classify the vast majority of observations as not belonging to swarm events. Otherwise we might end up with a model that could send notifications based on false positives, which should be avoided, as beekeepers may lose interest in participating in the project if the app causes them unnecessary trips to the apiary. For the Random Forest model this condition is met, as probabilities remain generally low for the new data. Only in very few cases - likely due to sensor failure - the model (falsely) predicts a swarm with high probability of around 75%, which still is a considerable improvement compared with the logistic regression model, which reacts very strongly very often, see the example shown in figure <a href="use-cases-for-machine-learning-methods.html#fig:swarmnewdata">4.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:swarmnewdata"></span>
+<img src="charts/swarm_model_new_data.png" alt="Applying trained models on new data" width="856" />
+<p class="caption">
+Figure 4.3: Applying trained models on new data
+</p>
+</div>
+<p>An issue of the trained Random Forest model is its dependence on complete observations. As our data is often incomplete, either due to the sensors not sending data or sending erroneous data that are then removed by the cleaning algorithm, there are many observations where the full model would not produce predictions at all. Based on the analysis of missingness shown in figure 19, the most frequent cause of incomplete data is one sensor component failing completely. Indeed, in training the logistic regression and random forest models before, one case of a swarming event was actually not included, as it had no records from the thermometer unit during the event. Thus, to complement the above model using data from all three sensor components, we further train three more Random Forest models with default hyperparameters for cases where only two of the three components are active and three more with only one component active. All models are estimated using the same complete observations as the full model. Figure <a href="use-cases-for-machine-learning-methods.html#fig:rfperformance">4.4</a> shows that reducing the number of predictors does not have a significant negative effect on model performance: in fact, the model without variables based on weight achieves a higher accuracy and specificity than the model with data from all sensor components. Overall, the accuracy is quite high across models and in a rather narrow range between 96% and 98%.</p>
+<div class="figure" style="text-align: center"><span id="fig:rfperformance"></span>
+<img src="charts/rf_performance_by_components.png" alt="Model performance depending on number of used sensor components" width="856" />
+<p class="caption">
+Figure 4.4: Model performance depending on number of used sensor components
+</p>
+</div>
+<p>For specificity, the metric explaining the share of non-swarm observations that are correctly predicted, the variation is somewhat wider: while the models with the highest overall accuracy also have higher specificities between 84% and 88%, which is also achieved by the model using only thermometer data, the models using only the scale, the humidity sensor or both achieve an average specificity between 74% and 80%.
+All estimated models could still be improved using hyper-parameter tuning. Also, other model types such as Boosted Trees could be explored. However, given the small training dataset and the overall low data quality, a too extensive modelling approach appears premature at this stage and should be targeted for late 2021, when hopefully data quality has improved and more swarms were recorded.</p>
+</div>
+<div id="importance-of-swarm-prevention" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Importance of swarm prevention</h3>
+<p>One reason behind the overall low count of swarms in the data so far is that the beekeepers actively try to prevent swarming. One popular method of swarm prevention is introducing a new queen annually, or at least every two years, to make sure that enough pheromones are emitted to keep the worker bees from developing queen cells. Other measures include clipping the queen’s wings or destroying new queen cells once discovered. It may thus be of merit to also look not only into hives where swarms have happened to provide timely alerts to the beekeeper to catch the swarm and provide a new home, but also analyze those hives in which the beekeepers observe the first signs of the colony’s urge to swarm, namely by developing queen cells or at least building the required structure, a “fake” queen cell (“Spielnäpfchen” in German).<br />
+In the case of the eight sensor kits with recorded swarm events, only two had recorded observations of building of queen cells before the swarming event. In one case, however, the beekeeper cut out the queen cells (mentioned in the qualitative notes) and in the last inspection value for this variable before the swarming event, around one month earlier, the value was set to FALSE, thus the beekeeper likely assumed to have successfully suppressed the bees’ urge to swarm. While in the currently available data there are not enough observations for useful analysis, looking ahead it may be useful to include in the set of predictors of any detection model a dummy on whether building of queen cells was observed during inspections in the recent time and on types of swarm prevention methods applied, if any, but this depends on the completeness and accuracy on the side of the beekeepers.</p>
+</div>
+</div>
+<div id="other-use-cases-for-supervised-methods" class="section level2">
+<h2><span class="header-section-number">4.2</span> Other use cases for supervised methods</h2>
+<p>At the current stage, the dataset on inspections is quite small not allowing for sound analysis combining sensor and inspection data, but going forward a number of other use cases come to mind:</p>
+<ul>
+<li><strong>Estimate risk of colony loss</strong>: do the sensor data for colonies lost over the winter differ from those that survive? Can dangerous levels or trends be detected early enough for the beekeeper to intervene before the hibernation? An application of a supervised approach using boosted decision trees was presented by (Dineva und Atanasova, 2018). In the current dataset only one reported colony loss fell within a period with recorded sensor data which is not enough for statistical inference.</li>
+<li><strong>Detection of Varroa mite pests or other diseases</strong>: can sensor data show a significant effect of a Varroa mite infestation or a spread of the Deformed Wing Virus? E.g., would less bees leave the hive for foraging, leading to a smaller weight fluctuation and less pollen and honey inflow or would the bees inside have more difficulties maintaining the microclimate within the hive? An early detection of diseases and thus an early treatment may improve the health of the colony. In the currently available data, only six hives with sensor data recorded 22 cases of Varroa infestation, while ten more hives with sensor data recorded negative observations on this issue.</li>
+<li><strong>Estimation of colony size and food reserves</strong>: based on the weight and its daily fluctuation during the foraging period one could estimate the number of bees in the colony and thus their food demand. Regression methods could help suggest an ideal amount of honey to be harvested and/or the right amount of supplement feeding that would not lead to starvation of the colony.</li>
+</ul>
+</div>
+<div id="unsupervised-anomaly-detection" class="section level2">
+<h2><span class="header-section-number">4.3</span> Unsupervised anomaly detection</h2>
+<p>Given the rare occurrence of inspections and the generally low size of the inspection dataset compared to the millions of sensor observations it may also be useful to gain insights from unsupervised methods, classifying the data into normal and anomalous. The approach chosen by <span class="citation">Davidson et al. (<a href="#ref-Davidson.2020" role="doc-biblioref">2020</a>)</span> was to use a method of Deep Learning, namely Recurrent Auto-Encoders, to classify 60-minute sequences of consecutive data from beehives with heterogenous sensor set-ups, and were able to detect anomalies that were due to beekeeper inspections, but also swarms. The training of Neural Networks, however, requires complete sequences of data, which can rarely be achieved in the currently available dataset.<br />
+Within Bee Observer, the project team also worked on a methods of anomaly detection, to be presented at an upcoming conference (<span class="citation">Senger et al. (<a href="#ref-Senger.2020" role="doc-biblioref">2020</a>)</span>): on the simpler side. the distance of the observed values to the moving median of the last five minutes for one or multiple variables of interest are classified using a statistical test for outliers. More advanced methods exploit the stationarity and seasonality of the variables: the variables are modelled using uni- or multivariate Autoregressive Integrated Moving Average (ARIMA) models and the outlier test is then applied to the model residuals. Tested on a number of selected, mostly complete sequences of data, the moving median as well as some advanced methods are able to identify a substantial share of observations as anomalies that are within a close distance of an inspection recorded in the beekeeper app. Afterwards the anomalous observations are clustered together based on their timestamps (acknowledging the longer duration of inspections), and an agent-based model assesses the likelihood that the anomaly could be due to an inspection based on the variables such as the time since the last inspection or the weather conditions.<br />
+The anomalies detected by the unsupervised models would afterwards provide a good starting point for further analysis using supervised methods.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Anand.2018">
+<p>Anand, N., V. B. Raj, M. S. Ullas, and A. Srivastava. 2018. “Swarm Detection and Beehive Monitoring System Using Auditory and Microclimatic Analysis.” In <em>2018 3rd International Conference on Circuits, Control, Communication and Computing (I4c)</em>, 1–4. <a href="https://doi.org/10.1109/CIMCA.2018.8739710">https://doi.org/10.1109/CIMCA.2018.8739710</a>.</p>
+</div>
+<div id="ref-Bayir.2016">
+<p>Bayir, Raif, and Ahmet Albayrak. 2016. “The Monitoring of Nectar Flow Period of Honey Bees Using Wireless Sensor Networks.” <em>International Journal of Distributed Sensor Networks</em> 12 (11): 155014771667800. <a href="https://doi.org/10.1177/1550147716678003">https://doi.org/10.1177/1550147716678003</a>.</p>
+</div>
+<div id="ref-Chawla.2002">
+<p>Chawla, N. V., K. W. Bowyer, L. O. Hall, and W. P. Kegelmeyer. 2002. “SMOTE: Synthetic Minority over-Sampling Technique.” <em>Journal of Artificial Intelligence Research</em> 16: 321–57. <a href="https://doi.org/10.1613/jair.953">https://doi.org/10.1613/jair.953</a>.</p>
+</div>
+<div id="ref-Davidson.2020">
+<p>Davidson, Padraig, Michael Steininger, Florian Lautenschlager, Konstantin Kobs, Anna Krause, and Andreas Hotho. 2020. “Anomaly Detection in Beehives Using Deep Recurrent Autoencoders.” <em>Proceedings of the 9th International Conference on Sensor Networks (SENSORNETS</em>. <a href="https://arxiv.org/pdf/2003.04576">https://arxiv.org/pdf/2003.04576</a>.</p>
+</div>
+<div id="ref-EdwardsMurphy.2015b">
+<p>Edwards Murphy, Fiona, Michele Magno, Liam O’Leary, Killian Troy, Pádraig M. Whelan, and Emanuel M. Popovici. 2015. “Big Brother for Bees (3B) — Energy Neutral Platform for Remote Monitoring of Beehive Imagery and Sound.” In <em>2015 6th International Workshop on Advances in Sensors and Interfaces (Iwasi)</em>, 106–11. <a href="https://doi.org/10.1109/IWASI.2015.7184943">https://doi.org/10.1109/IWASI.2015.7184943</a>.</p>
+</div>
+<div id="ref-Markovic.2016">
+<p>Markovic, Dusan, Uros Pesovic, Sladjana Djurasevic, and Sinisa Randjic. 2016. “Decision Support System for Temperature Monitoring in Beehives.” <em>0354-9542</em> 21 (42): 135–44. <a href="https://doi.org/10.5937/AASer1642135M">https://doi.org/10.5937/AASer1642135M</a>.</p>
+</div>
+<div id="ref-Senger.2020">
+<p>Senger, Diren, Carolin Johannsen, Alexandros Melemenidis, Alexander Goncharskiy, and Thorsten Kluss. 2020. “Unsupervised Anomaly Detection on Multisensory Data from Honey Bee Colonies.” In <em>2020 Ieee International Conference on Data Mining (Icdm)</em>.</p>
+</div>
+<div id="ref-Wright.2017">
+<p>Wright, Marvin N., and Andreas Ziegler. 2017. “Ranger: A Fast Implementation of Random Forests for High Dimensional Data in C++ and R.” <em>Journal of Statistical Software</em> 77 (1): 1–17. <a href="https://doi.org/10.18637/jss.v077.i01">https://doi.org/10.18637/jss.v077.i01</a>.</p>
+</div>
+<div id="ref-Zacepins.2016">
+<p>Zacepins, Aleksejs, Armands Kviesis, Egils Stalidzans, Marta Liepniece, and Jurijs Meitalovs. 2016. “Remote Detection of the Swarming of Honey Bee Colonies by Single-Point Temperature Monitoring.” <em>Biosystems Engineering</em> 148: 76–80. <a href="https://doi.org/10.1016/j.biosystemseng.2016.05.012">https://doi.org/10.1016/j.biosystemseng.2016.05.012</a>.</p>
+</div>
+<div id="ref-Ziegler.2019">
+<p>Ziegler, Silvio, Martin Dettli, and Jonas Thommen. 2019. “Ein Neuer Blickwinkel Aufs Schwarmgeschehen.” <em>Schweizerische Bienen-Zeitung</em> 2019 (2): 22–26.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="12">
+<li id="fn12"><p>One more swarm was registered, which was however not used in the later dataset to train the model: in this case the beekeeper was present when the colony started swarming and initiated a full inspection at the time of departure. Thus, effects of the swarm and the external intervention overlap and may likely affected the predictive power of a model negatively.<a href="use-cases-for-machine-learning-methods.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>As this analysis was limited to the normal swarming season between April and July, a further predictor for the time in the year was not deemed necessary. When more swarm data becomes available in future data collections, allowing for more balanced training sets, it may be useful to include (non-swarm) observations outside the swarming season and also include the day in the year as a predictor.<a href="use-cases-for-machine-learning-methods.html#fnref13" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-profiling-and-assessment-of-data-quality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusion-and-outlook.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["thesis_book.pdf", "thesis_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
