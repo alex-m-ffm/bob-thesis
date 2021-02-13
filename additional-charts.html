@@ -33,6 +33,7 @@
   
 <link rel="prev" href="conclusion-and-outlook.html"/>
 <link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,24 +51,20 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +84,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,33 +133,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">MSc Thesis - Bee Observer</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#objective"><i class="fa fa-check"></i><b>1.1</b> Objective</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#methodology"><i class="fa fa-check"></i><b>1.2</b> Methodology</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a><ul>
+<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="literature.html"><a href="literature.html#short-introduction-to-apiology"><i class="fa fa-check"></i><b>2.1</b> Short introduction to apiology</a></li>
 <li class="chapter" data-level="2.2" data-path="literature.html"><a href="literature.html#first-steps-in-precision-beekeeping"><i class="fa fa-check"></i><b>2.2</b> First steps in precision beekeeping</a></li>
 <li class="chapter" data-level="2.3" data-path="literature.html"><a href="literature.html#useful-methods-of-machine-learning-from-other-domains"><i class="fa fa-check"></i><b>2.3</b> Useful methods of machine learning from other domains</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html"><i class="fa fa-check"></i><b>3</b> Data profiling and assessment of data quality</a><ul>
-<li class="chapter" data-level="3.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#sensor-data"><i class="fa fa-check"></i><b>3.1</b> Sensor data</a><ul>
+<li class="chapter" data-level="3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html"><i class="fa fa-check"></i><b>3</b> Data profiling and assessment of data quality</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#sensor-data"><i class="fa fa-check"></i><b>3.1</b> Sensor data</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#single-column-analysis"><i class="fa fa-check"></i><b>3.1.1</b> Single column analysis</a></li>
 <li class="chapter" data-level="3.1.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#initial-cleaning"><i class="fa fa-check"></i><b>3.1.2</b> Initial cleaning</a></li>
 <li class="chapter" data-level="3.1.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#multi-column-analysis"><i class="fa fa-check"></i><b>3.1.3</b> Multi-column analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#inspections-data"><i class="fa fa-check"></i><b>3.2</b> Inspections data</a></li>
-<li class="chapter" data-level="3.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#metadata"><i class="fa fa-check"></i><b>3.3</b> Apiary and hive metadata as a means to integrate data from external sources</a><ul>
+<li class="chapter" data-level="3.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#metadata"><i class="fa fa-check"></i><b>3.3</b> Apiary and hive metadata as a means to integrate data from external sources</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#determining-the-sun-level"><i class="fa fa-check"></i><b>3.3.1</b> Determining the sun level</a></li>
 <li class="chapter" data-level="3.3.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#meteorological-data"><i class="fa fa-check"></i><b>3.3.2</b> Meteorological data</a></li>
 <li class="chapter" data-level="3.3.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#phenological-data"><i class="fa fa-check"></i><b>3.3.3</b> Phenological data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html"><i class="fa fa-check"></i><b>4</b> Use cases for machine learning methods</a><ul>
-<li class="chapter" data-level="4.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#supervised-swarm-detection"><i class="fa fa-check"></i><b>4.1</b> Supervised swarm detection</a><ul>
+<li class="chapter" data-level="4" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html"><i class="fa fa-check"></i><b>4</b> Use cases for machine learning methods</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#supervised-swarm-detection"><i class="fa fa-check"></i><b>4.1</b> Supervised swarm detection</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#training-a-classification-model"><i class="fa fa-check"></i><b>4.1.1</b> Training a classification model</a></li>
 <li class="chapter" data-level="4.1.2" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#importance-of-swarm-prevention"><i class="fa fa-check"></i><b>4.1.2</b> Importance of swarm prevention</a></li>
 </ul></li>
@@ -174,7 +179,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A" data-path="additional-charts.html"><a href="additional-charts.html"><i class="fa fa-check"></i><b>A</b> Additional charts</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a>
+<a href="https://alex.melemenidis.de" target="blank">Return to website</a></li>
 
 </ul>
 
@@ -193,87 +199,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="additional-charts" class="section level1">
+<div id="additional-charts" class="section level1" number="6">
 <h1><span class="header-section-number">A</span> Additional charts</h1>
 <p>For most subsequent observations, the interval is five seconds - the IQR is a line rather than a box in the below chart. Sometimes, however, the intervals are shorter or (much) longer.</p>
 <div class="figure" style="text-align: center"><span id="fig:intervals"></span>
-<img src="charts/intervals_boxplot.png" alt="Time gaps between non-missing observations" width="856" />
+<img src="charts/intervals_boxplot.png" alt="Time gaps between non-missing observations"  />
 <p class="caption">
 Figure A.1: Time gaps between non-missing observations
 </p>
 </div>
 <p>The low level of overall data correctness is largely driven by the by the high occurrence of incomplete data. Looking at the proxied correctness for individual variables, even the least correct variable, weight, is at around 90%.</p>
 <div class="figure" style="text-align: center"><span id="fig:correctnessvar"></span>
-<img src="charts/data_correctness_ind.png" alt="Data correctness at variable level" width="856" />
+<img src="charts/data_correctness_ind.png" alt="Data correctness at variable level"  />
 <p class="caption">
 Figure A.2: Data correctness at variable level
 </p>
 </div>
 <p>Regarding the thresholds used in the rule-based cleaning algorithm, these are based on the most extreme “naturally” occurring events - the beekeeper inspections. In the below chart, weight drops by more than 12kg per Minute when a frame is removed. At the same time, due to the entry of dry air, humidity is dropping rapidly, while the bees are also heating up under stress (the temperature sensor at the humidity unit heats up to over 50° possibly because it is exposed to direct sun).</p>
 <div class="figure" style="text-align: center"><span id="fig:inspectionschanges"></span>
-<img src="charts/inspections_changes.png" alt="Variable fluctuations during a beekeeper inspection" width="856" />
+<img src="charts/inspections_changes.png" alt="Variable fluctuations during a beekeeper inspection"  />
 <p class="caption">
 Figure A.3: Variable fluctuations during a beekeeper inspection
 </p>
 </div>
 <p>This is a case of weight developments that cannot be reconciled with normal behaviour. Likely the sensor is not correctly calibrated (or the values belong to a different sensor).</p>
 <div class="figure" style="text-align: center"><span id="fig:weightanomaly"></span>
-<img src="charts/anomalous_weight_fluctuations.png" alt="Anomalous weight fluctuations" width="856" />
+<img src="charts/anomalous_weight_fluctuations.png" alt="Anomalous weight fluctuations"  />
 <p class="caption">
 Figure A.4: Anomalous weight fluctuations
 </p>
 </div>
 <p>The analysis of available information of incomplete data suggests that the thermometers fail more frequently during colder outside temperatures and with higher humidity. Also the last valid data point before a data gap tends to have a lower temperatures than the distribution of all valid values.</p>
 <div class="figure" style="text-align: center"><span id="fig:violinh"></span>
-<img src="charts/violin_h_t_missing.png" alt="Humidity and missingness" width="856" />
+<img src="charts/violin_h_t_missing.png" alt="Humidity and missingness"  />
 <p class="caption">
 Figure A.5: Humidity and missingness
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:violint"></span>
-<img src="charts/violin_t_o_t_missing.png" alt="Outside temperature and missingness" width="856" />
+<img src="charts/violin_t_o_t_missing.png" alt="Outside temperature and missingness"  />
 <p class="caption">
 Figure A.6: Outside temperature and missingness
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:violingapt"></span>
-<img src="charts/valid_obs_vs_last_obs_before_gap_t_i_3.png" alt="Valid observations vs. values before gaps" width="856" />
+<img src="charts/valid_obs_vs_last_obs_before_gap_t_i_3.png" alt="Valid observations vs. values before gaps"  />
 <p class="caption">
 Figure A.7: Valid observations vs. values before gaps
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:menuapiary"></span>
-<img src="charts/Create_Apiary.jpg" alt="App menus to create apiary" width="540" />
+<img src="charts/Create_Apiary_smaller.jpg" alt="App menus to create apiary" height="80%" />
 <p class="caption">
 Figure A.8: App menus to create apiary
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:menuhive"></span>
-<img src="charts/Create_Hive.jpg" alt="App menus to create hive" width="540" />
+<img src="charts/Create_Hive_smaller.jpg" alt="App menus to create hive" height="80%" />
 <p class="caption">
 Figure A.9: App menus to create hive
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:menuinspections"></span>
-<img src="charts/inspections_full.jpg" alt="App menus to record an inspection" width="405" />
+<img src="charts/inspections_full.jpg" alt="App menus to record an inspection"  />
 <p class="caption">
 Figure A.10: App menus to record an inspection
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:inspectionscount"></span>
-<img src="charts/inspections_count_large.png" alt="Valid observations per inspection field" width="856" />
+<img src="charts/inspections_count_large.png" alt="Valid observations per inspection field"  />
 <p class="caption">
 Figure A.11: Valid observations per inspection field
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:frameschange"></span>
-<img src="charts/weight_and_frames_changed.png" alt="Frames changed during inspections and impact on weight" width="856" />
+<img src="charts/weight_and_frames_changed.png" alt="Frames changed during inspections and impact on weight"  />
 <p class="caption">
 Figure A.12: Frames changed during inspections and impact on weight
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:meteo"></span>
-<img src="charts/meteo_data_nearby.png" alt="Availability of meteorological data near the beehives" width="856" />
+<img src="charts/meteo_data_nearby.png" alt="Availability of meteorological data near the beehives"  />
 <p class="caption">
 Figure A.13: Availability of meteorological data near the beehives
 </p>
