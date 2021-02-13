@@ -33,6 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="literature.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,24 +51,20 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +84,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,33 +133,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">MSc Thesis - Bee Observer</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#objective"><i class="fa fa-check"></i><b>1.1</b> Objective</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#methodology"><i class="fa fa-check"></i><b>1.2</b> Methodology</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a><ul>
+<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="literature.html"><a href="literature.html#short-introduction-to-apiology"><i class="fa fa-check"></i><b>2.1</b> Short introduction to apiology</a></li>
 <li class="chapter" data-level="2.2" data-path="literature.html"><a href="literature.html#first-steps-in-precision-beekeeping"><i class="fa fa-check"></i><b>2.2</b> First steps in precision beekeeping</a></li>
 <li class="chapter" data-level="2.3" data-path="literature.html"><a href="literature.html#useful-methods-of-machine-learning-from-other-domains"><i class="fa fa-check"></i><b>2.3</b> Useful methods of machine learning from other domains</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html"><i class="fa fa-check"></i><b>3</b> Data profiling and assessment of data quality</a><ul>
-<li class="chapter" data-level="3.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#sensor-data"><i class="fa fa-check"></i><b>3.1</b> Sensor data</a><ul>
+<li class="chapter" data-level="3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html"><i class="fa fa-check"></i><b>3</b> Data profiling and assessment of data quality</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#sensor-data"><i class="fa fa-check"></i><b>3.1</b> Sensor data</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#single-column-analysis"><i class="fa fa-check"></i><b>3.1.1</b> Single column analysis</a></li>
 <li class="chapter" data-level="3.1.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#initial-cleaning"><i class="fa fa-check"></i><b>3.1.2</b> Initial cleaning</a></li>
 <li class="chapter" data-level="3.1.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#multi-column-analysis"><i class="fa fa-check"></i><b>3.1.3</b> Multi-column analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#inspections-data"><i class="fa fa-check"></i><b>3.2</b> Inspections data</a></li>
-<li class="chapter" data-level="3.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#metadata"><i class="fa fa-check"></i><b>3.3</b> Apiary and hive metadata as a means to integrate data from external sources</a><ul>
+<li class="chapter" data-level="3.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#metadata"><i class="fa fa-check"></i><b>3.3</b> Apiary and hive metadata as a means to integrate data from external sources</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#determining-the-sun-level"><i class="fa fa-check"></i><b>3.3.1</b> Determining the sun level</a></li>
 <li class="chapter" data-level="3.3.2" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#meteorological-data"><i class="fa fa-check"></i><b>3.3.2</b> Meteorological data</a></li>
 <li class="chapter" data-level="3.3.3" data-path="data-profiling-and-assessment-of-data-quality.html"><a href="data-profiling-and-assessment-of-data-quality.html#phenological-data"><i class="fa fa-check"></i><b>3.3.3</b> Phenological data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html"><i class="fa fa-check"></i><b>4</b> Use cases for machine learning methods</a><ul>
-<li class="chapter" data-level="4.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#supervised-swarm-detection"><i class="fa fa-check"></i><b>4.1</b> Supervised swarm detection</a><ul>
+<li class="chapter" data-level="4" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html"><i class="fa fa-check"></i><b>4</b> Use cases for machine learning methods</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#supervised-swarm-detection"><i class="fa fa-check"></i><b>4.1</b> Supervised swarm detection</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#training-a-classification-model"><i class="fa fa-check"></i><b>4.1.1</b> Training a classification model</a></li>
 <li class="chapter" data-level="4.1.2" data-path="use-cases-for-machine-learning-methods.html"><a href="use-cases-for-machine-learning-methods.html#importance-of-swarm-prevention"><i class="fa fa-check"></i><b>4.1.2</b> Importance of swarm prevention</a></li>
 </ul></li>
@@ -174,7 +179,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A" data-path="additional-charts.html"><a href="additional-charts.html"><i class="fa fa-check"></i><b>A</b> Additional charts</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a>
+<a href="https://alex.melemenidis.de" target="blank">Return to website</a></li>
 
 </ul>
 
@@ -193,52 +199,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1">
+<div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>The European honey bee (<em>apis mellifera</em>) provides a significant contribution to agriculture in Germany and worldwide: the production of roughly 35% of globally consumed agricultural products relies on pollination by bees and other pollinators (<span class="citation">Klein et al. (<a href="#ref-Klein.2007" role="doc-biblioref">2007</a>)</span>). Besides that, bees produce honey, a product with up to 25 thousand tons of production and an even larger domestic consumption in Germany, according to the Federation of German Beekeepers (DIB). While the longer-term population trend of bee colonies has been positive in Germany, every year significant numbers of colonies do not survive the winter (<span class="citation">Deutscher Imkerbund (<a href="#ref-DeutscherImkerbund.2020" role="doc-biblioref">2020</a>)</span>). A number of studies have identified as the largest, and statistically significant factors for the loss of colonies over the winter in particular mite pests and virus infections. Other factors, such as increased use of pesticides in nearby fields or global warming have been discussed in the literature with controversy: many critics of industrialized agriculture suggest that while modern pesticides are not directly lethal to bees when ingested via pollen, they might still have effects on the breeding of new bees and thus contribute to colony collapse at a later stage.<br />
-A longitudinal study conducted since 2004 by a number of stakeholders in science and industry is the German Bee Monitoring Project (DeBiMo) (<span class="citation">Genersch et al. (<a href="#ref-Genersch.2010" role="doc-biblioref">2010</a>)</span>), which collects high quality data from selected 120 beekeepers across Germany. This is done by means of regular surveys throughout the season as well as three annual inspections including detailed lab analyses. Up to now, the regular reports have identified as significant factors contributing to colony losses over the winter infestations with the Varroa mite, certain virus infections and old age of the queen, while there seems to be no indication of wrong beekeeping practice. The results obtained in this project might, however, be somewhat biased due to the selection of experienced beekeepers, which by definition lowers the possibility of wrong beekeeping practices. A wider survey of a different apicultural institute shows higher rates of colony losses over the winter than in DeBiMo (<span class="citation">Klockgether and Hefner (<a href="#ref-Klockgether.2016" role="doc-biblioref">2016</a>)</span>). A monitoring as in DeBiMo with only few inspections per year, however, only serves as a means of research, but provides little or no real-time support to the participating beekeepers to quickly react to possible mite pests or other problems. At the same time, a higher frequency of inspections, which involve physically opening the beehive, can cause intense stress to the bees and especially in the winter may be fatal for the colony. In recent years academia and industry have increasingly invested in finding less invasive solutions using Internet of Things (IoT) technologies, namely by installing various sensors within beehives for continuous observation and using machine learning methods to improve beekeeping practices.<br />
-Bee Observer BOB, a Citizen Science project with a grant of the German Federal Ministry of Education and Research (BMBF) (<span class="citation">BMBF-Internetredaktion (<a href="#ref-BMBFInternetredaktion.2019" role="doc-biblioref">2019</a>)</span>), under project management of the University of Bremen <span class="citation">(“Sensorbeuten - Cognitive Neuroinformatics,” <a href="#ref-UniversitatBremen.522020" role="doc-biblioref">n.d.</a>)</span>, is one project in this field. Being a Citizen Science project, BOB relies on support by volunteers, often via associations. In this context the stakeholders involved are the Hiveeyes project (<span class="citation">The Hiveeyes Developers (<a href="#ref-TheHiveeyesDevelopers.1022019" role="doc-biblioref">n.d.</a>)</span>) and individual citizens for the development and implementation of the framework for the technical system of sensors, and CorrelAid <span class="citation">(“CorrelAid,” <a href="#ref-CorrelAideV.412020" role="doc-biblioref">n.d.</a>)</span> for data analysis. The project further includes the participating beekeepers individually and via associations. The costs for the sensors as well as necessary spare parts for repairs are covered by the project, while the costs for electricity and internet connection have to be covered by the beekeepers themselves. The project grant of the BMBF is running out in December 2020, but the University of Bremen is currently exploring ways to continue the project afterwards.<br />
+<p>The European honey bee (<em>apis mellifera</em>) provides a significant contribution to agriculture in Germany and worldwide: the production of roughly 35% of globally consumed agricultural products relies on pollination by bees and other pollinators (<span class="citation"><a href="references.html#ref-Klein.2007" role="doc-biblioref">Klein et al.</a> (<a href="references.html#ref-Klein.2007" role="doc-biblioref">2007</a>)</span>). Besides that, bees produce honey, a product with up to 25 thousand tons of production and an even larger domestic consumption in Germany, according to the Federation of German Beekeepers (DIB). While the longer-term population trend of bee colonies has been positive in Germany, every year significant numbers of colonies do not survive the winter (<span class="citation"><a href="references.html#ref-DeutscherImkerbund.2020" role="doc-biblioref">Deutscher Imkerbund</a> (<a href="references.html#ref-DeutscherImkerbund.2020" role="doc-biblioref">2020</a>)</span>). A number of studies have identified as the largest, and statistically significant factors for the loss of colonies over the winter in particular mite pests and virus infections. Other factors, such as increased use of pesticides in nearby fields or global warming have been discussed in the literature with controversy: many critics of industrialized agriculture suggest that while modern pesticides are not directly lethal to bees when ingested via pollen, they might still have effects on the breeding of new bees and thus contribute to colony collapse at a later stage.<br />
+A longitudinal study conducted since 2004 by a number of stakeholders in science and industry is the German Bee Monitoring Project (DeBiMo) (<span class="citation"><a href="references.html#ref-Genersch.2010" role="doc-biblioref">Genersch et al.</a> (<a href="references.html#ref-Genersch.2010" role="doc-biblioref">2010</a>)</span>), which collects high quality data from selected 120 beekeepers across Germany. This is done by means of regular surveys throughout the season as well as three annual inspections including detailed lab analyses. Up to now, the regular reports have identified as significant factors contributing to colony losses over the winter infestations with the Varroa mite, certain virus infections and old age of the queen, while there seems to be no indication of wrong beekeeping practice. The results obtained in this project might, however, be somewhat biased due to the selection of experienced beekeepers, which by definition lowers the possibility of wrong beekeeping practices. A wider survey of a different apicultural institute shows higher rates of colony losses over the winter than in DeBiMo (<span class="citation"><a href="references.html#ref-Klockgether.2016" role="doc-biblioref">Klockgether and Hefner</a> (<a href="references.html#ref-Klockgether.2016" role="doc-biblioref">2016</a>)</span>). A monitoring as in DeBiMo with only few inspections per year, however, only serves as a means of research, but provides little or no real-time support to the participating beekeepers to quickly react to possible mite pests or other problems. At the same time, a higher frequency of inspections, which involve physically opening the beehive, can cause intense stress to the bees and especially in the winter may be fatal for the colony. In recent years academia and industry have increasingly invested in finding less invasive solutions using Internet of Things (IoT) technologies, namely by installing various sensors within beehives for continuous observation and using machine learning methods to improve beekeeping practices.<br />
+Bee Observer BOB, a Citizen Science project with a grant of the German Federal Ministry of Education and Research (BMBF) (<span class="citation"><a href="references.html#ref-BMBFInternetredaktion.2019" role="doc-biblioref">BMBF-Internetredaktion</a> (<a href="references.html#ref-BMBFInternetredaktion.2019" role="doc-biblioref">2019</a>)</span>), under project management of the University of Bremen <span class="citation"><a href="references.html#ref-UniversitatBremen.522020" role="doc-biblioref"><span>“Sensorbeuten - Cognitive Neuroinformatics”</span></a> (<a href="references.html#ref-UniversitatBremen.522020" role="doc-biblioref">5/2/2020</a>)</span>, is one project in this field. Being a Citizen Science project, BOB relies on support by volunteers, often via associations. In this context the stakeholders involved are the Hiveeyes project (<span class="citation"><a href="references.html#ref-TheHiveeyesDevelopers.1022019" role="doc-biblioref">The Hiveeyes Developers</a> (<a href="references.html#ref-TheHiveeyesDevelopers.1022019" role="doc-biblioref">10/2/2019</a>)</span>) and individual citizens for the development and implementation of the framework for the technical system of sensors, and CorrelAid <span class="citation"><a href="references.html#ref-CorrelAideV.412020" role="doc-biblioref"><span>“CorrelAid”</span></a> (<a href="references.html#ref-CorrelAideV.412020" role="doc-biblioref">4/1/2020</a>)</span> for data analysis. The project further includes the participating beekeepers individually and via associations. The costs for the sensors as well as necessary spare parts for repairs are covered by the project, while the costs for electricity and internet connection have to be covered by the beekeepers themselves. The project grant of the BMBF is running out in December 2020, but the University of Bremen is currently exploring ways to continue the project afterwards.<br />
 Work on the project has started in 2018 with the development of the sensors and since February 2019 data is continuously collected from beehives across Germany (and a few in other countries), providing information on temperature, humidity, air pressure and weight. Further, the participating beekeepers are storing the observations made during their regular inspections via a mobile application. The aim of CorrelAid’s involvement is to find out whether by using methods of machine learning one can detect outliers and anomalous trends and predict certain events in the development of the bee population. Successful models should then be implemented directly into the mobile app by the project team of the University of Bremen, so that beekeepers receive useful notifications to maintain colony health.</p>
-<div id="objective" class="section level2">
+<div id="objective" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Objective</h2>
 <p>The Internet of Things opens up enormous opportunities to research in general and apiology in particular: with growing amounts of data, researchers are able to get better insights into bee behavior and help beekeepers in their work, but also analyze the impact of external environmental changes on bees such as the use of pesticides. The open and voluntary nature of the Bee Observer project allows for a good inflow of data, but this comes at the cost of somewhat lower data quality: while the project team provides guidance on how to install the sensor kits, compliance with these guidelines and regular maintenance of the sensors cannot be ensured. Also, the sensors used in the project were selected for their relatively low costs, to keep entry barriers low for newcomers. These factors lead to a rather low data quality, expressed predominantly through lower than expected data volumes, when sensor fail to transmit data completely, or erroneous measurements, when sensor transmit data that is either outside the feasible sensor range or within the range, but implausible. This can happen when the sensor kits lose access to electricity or get damaged, which can happen e.g. when they overheat. As a second source of information there is a database on beekeeper inspections filled by the beekeepers via a mobile app, where, however, most fields are voluntary.<br />
 To build a good basis for future bee research, in this thesis I will conduct an in-depth data quality analysis of the sensor data and propose appropriate data cleaning steps for the existing data on the one hand as well as monitoring solutions to improve the quality of future raw data. To keep the beekeepers active and engaged in the project I will also propose as an analytical use case a classification model to detect swarm events.</p>
 </div>
-<div id="methodology" class="section level2">
+<div id="methodology" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Methodology</h2>
-<p>In the data quality assessment, the sensor and the inspections data will be analyzed with simple summary statistics and more detailed analyses, addressing seasonal patterns, missingness and correlation between variables. The sensor data will further be assessed under a data quality framework developed with a special focus on the Internet of Things (<span class="citation">Cheng et al. (<a href="#ref-Cheng.2018" role="doc-biblioref">2018</a>)</span>). Based on the insights obtained from the analysis, rules to remove implausible sensor values and ideally impute them are defined. Further, suggestions to improve the design of the mobile app to record beekeeper inspections are made to improve the internal consistency of the data.<br />
+<p>In the data quality assessment, the sensor and the inspections data will be analyzed with simple summary statistics and more detailed analyses, addressing seasonal patterns, missingness and correlation between variables. The sensor data will further be assessed under a data quality framework developed with a special focus on the Internet of Things (<span class="citation"><a href="references.html#ref-Cheng.2018" role="doc-biblioref">Cheng et al.</a> (<a href="references.html#ref-Cheng.2018" role="doc-biblioref">2018</a>)</span>). Based on the insights obtained from the analysis, rules to remove implausible sensor values and ideally impute them are defined. Further, suggestions to improve the design of the mobile app to record beekeeper inspections are made to improve the internal consistency of the data.<br />
 As an analytical use case, a training dataset on swarming events is built, based on sensor data joined with information from on beekeeper inspections. Swarms should be detected in a timely manner, so that the beekeeper can react and move the colony into a new home instead of losing it. Different classification models are trained to detect swarming events, and the best is identified using standard performance metrics in a cross-validation exercise. The selected model should, however, also avoid too many false positives: too many unnecessary trips to the apiary may discourage the beekeepers from participating in the project. Afterwards, the model is tested on new unlabeled data collected during the swarming season to check how sensitive the model is.</p>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-BMBFInternetredaktion.2019">
-<p>BMBF-Internetredaktion. 2019. “Dem Bienensterben Auf Der Spur - Bmbf.” <a href="https://www.bmbf.de/de/dem-bienensterben-auf-der-spur-9156.html">https://www.bmbf.de/de/dem-bienensterben-auf-der-spur-9156.html</a>.</p>
-</div>
-<div id="ref-Cheng.2018">
-<p>Cheng, Hongju, Danyang Feng, Xiaobin Shi, and Chongcheng Chen. 2018. “Data Quality Analysis and Cleaning Strategy for Wireless Sensor Networks.” <em>EURASIP Journal on Wireless Communications and Networking</em> 2018 (1). <a href="https://doi.org/10.1186/s13638-018-1069-6">https://doi.org/10.1186/s13638-018-1069-6</a>.</p>
-</div>
-<div id="ref-CorrelAideV.412020">
-<p>“CorrelAid.” n.d. <a href="https://correlaid.org/">https://correlaid.org/</a>.</p>
-</div>
-<div id="ref-DeutscherImkerbund.2020">
-<p>Deutscher Imkerbund. 2020. “Weniger Winterverluste Als Erwartet.” <a href="https://deutscherimkerbund.de/download/0-603">https://deutscherimkerbund.de/download/0-603</a>.</p>
-</div>
-<div id="ref-Genersch.2010">
-<p>Genersch, Elke, Werner von der Ohe, Hannes Kaatz, Annette Schroeder, Christoph Otten, Ralph Büchler, Stefan Berg, et al. 2010. “The German Bee Monitoring Project: A Long Term Study to Understand Periodically High Winter Losses of Honey Bee Colonies.” <em>Apidologie</em> 41 (3): 332–52. <a href="https://doi.org/10.1051/apido/2010014">https://doi.org/10.1051/apido/2010014</a>.</p>
-</div>
-<div id="ref-Klein.2007">
-<p>Klein, Alexandra-Maria, Bernard E. Vaissière, James H. Cane, Ingolf Steffan-Dewenter, Saul A. Cunningham, Claire Kremen, and Teja Tscharntke. 2007. “Importance of Pollinators in Changing Landscapes for World Crops.” <em>Proceedings of the Royal Society B: Biological Sciences</em> 274 (1608): 303–13. <a href="https://doi.org/10.1098/rspb.2006.3721">https://doi.org/10.1098/rspb.2006.3721</a>.</p>
-</div>
-<div id="ref-Klockgether.2016">
-<p>Klockgether, Fred, and Peter Hefner. 2016. “Faktencheck Bienen.” <a href="https://www.iva.de/sites/default/files/benutzer/%25uid/publikationen/iva_1601_br_010_faktencheck_bienen_rz_201609015_low.pdf">https://www.iva.de/sites/default/files/benutzer/%25uid/publikationen/iva_1601_br_010_faktencheck_bienen_rz_201609015_low.pdf</a>.</p>
-</div>
-<div id="ref-UniversitatBremen.522020">
-<p>“Sensorbeuten - Cognitive Neuroinformatics.” n.d. <a href="http://www.cognitive-neuroinformatics.com/de/forschung/projekte/sensorbeuten">http://www.cognitive-neuroinformatics.com/de/forschung/projekte/sensorbeuten</a>.</p>
-</div>
-<div id="ref-TheHiveeyesDevelopers.1022019">
-<p>The Hiveeyes Developers. n.d. “The Hiveeyes Project.” <a href="https://hiveeyes.org/">https://hiveeyes.org/</a>.</p>
 </div>
 </div>
             </section>
